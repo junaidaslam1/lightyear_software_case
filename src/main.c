@@ -1,6 +1,6 @@
 /** @file
  *  @brief Main file.
- *  @description Just contains some example code. Adapt it in the way you like.
+ *  @description This file contains entry to the software case from Lightyear
  */
 
 #include <stdio.h>
