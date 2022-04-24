@@ -10,7 +10,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-static TorqueFiller_t s_torque_filler						=	{0};
+static TorqueFiller_t s_torque_filler				=	{0};
 static float s_var_speed_torque_0_deg[MAX_POSSIBLE_SPEED]	=	{0};
 
 int get_user_throttle_input(void)

@@ -13,56 +13,56 @@
  *  Macro definitions used in calculating
  *  different quantities.
  ***********************************************/
-#define MAX_THROTTLE_POSSIBLE	100 // With respect to 100% (30 degrees) pedal angle
+#define MAX_THROTTLE_POSSIBLE		100 	// With respect to 100% (30 degrees) pedal angle
 
 #define ROTATING_OBJECT_RADIUS	0.5	// Meters
 #define ROTATING_OBJECT_CIRCUM	2*3.14*ROTATING_OBJECT_RADIUS // 2*pi*r (r being the radius)
 
-#define SECONDS_IN_HOUR			3600
+#define SECONDS_IN_HOUR		3600
 #define METERS_IN_KM			1000
 #define MILLISECONDS_IN_SECOND	1000
 #define SECONDS_IN_A_MINUTE		60
 #define MINUTES_IN_A_HOUR		60
 
-#define MAX_TIMER_COUNT			1000
-#define MIN_TIMER_COUNT			220
+#define MAX_TIMER_COUNT		1000
+#define MIN_TIMER_COUNT		220
 
 #define ADC1_MIN_VOLT			0.5
 #define ADC2_MIN_VOLT			1.0
 
 #define SIMULATION_SPEED_LEVELS	2	//	0 and 50 km/h
 
-#define SPEED_AT_REST	0	// Km/h
-#define SPEED_AT_MOVE	50 	// Km/h
-#define TWO_SPEED_DUMMY_THRESHOLD	25 // Km/h just for the demo
+#define SPEED_AT_REST			0	// Km/h
+#define SPEED_AT_MOVE			50	// Km/h
+#define TWO_SPEED_DUMMY_THRESHOLD	25 	// Km/h just for the demo
 
-#define MIN_ANGLE		0	// degrees
-#define MAX_ANGLE		30	// degrees
+#define MIN_ANGLE			0	// degrees
+#define MAX_ANGLE			30	// degrees
 
-#define TORQUE_AT_REST_0_DEG	0 	// Newton Meter
-#define TORQUE_AT_50KM_0_DEG	-30 // Newton Meter
+#define TORQUE_AT_REST_0_DEG		0 	// Newton Meter
+#define TORQUE_AT_50KM_0_DEG		-30 	// Newton Meter
 
-#define TORQUE_AT_MAX_ANGLE		120 // Newton Meter
+#define TORQUE_AT_MAX_ANGLE		120 	// Newton Meter
 
 #define MAX_POSSIBLE_SPEED		50	//	km/h for demo only
 
 #define VAR_SPEED_TORQUE_DIFF_AT_0_THROTTLE	(0-(-30))/MAX_POSSIBLE_SPEED // Newton Meter
 
-#define TORQUE_ERROR_VALUE		-50  // Newton Meter
-#define ADC_ERROR_VALUE			0 //
-#define THROTTLE_ERR_THRESHOLD	5 // just for the demo
+#define TORQUE_ERROR_VALUE		-50  	// Newton Meter
+#define ADC_ERROR_VALUE		0 	//
+#define THROTTLE_ERR_THRESHOLD	5 	// just for the demo
 #define SPEED_ERR_THRESHOLD		MAX_POSSIBLE_SPEED+1 // Km/h just for the demo
-#define ANGLE_ERR_VALUE			-30
+#define ANGLE_ERR_VALUE		-30
 
-#define MAX_ADC_VOLTAGE			5000 // milli-volts
-#define ADC_RESOLUTION			65536 // 16 bit unsigned value
+#define MAX_ADC_VOLTAGE		5000 	// milli-volts
+#define ADC_RESOLUTION			65536 	// 16 bit unsigned value
 #define ADC_MULTIPLIER			(ADC_RESOLUTION/MAX_ADC_VOLTAGE)*1000
 
-#define OK	0
-#define NOK	-1
+#define OK				0
+#define NOK				-1
 
-#define DEBUG	0
-#define CALC_SPEED_FROM_RPM		1 // This is just to enable indirect way of calculating speed
+#define DEBUG				0 	// 1 - Enables debug messages
+#define CALC_SPEED_FROM_RPM		1 	// This is just to enable indirect way of calculating speed
 
 /************************************************
  *  Enumeration definitions

@@ -16,15 +16,15 @@
  * 	Module definitions
  ***********************************************/
 bool 	g_TwoSpeed	=	true, \
-		g_ThreadedImplementation = false;
+	g_ThreadedImplementation = false;
 
 static float 	s_Angle = 0.0, \
-				s_Torque = 0.0;
+		s_Torque = 0.0;
 
 static unsigned int s_Speed = 0;
 
 static volatile bool 	s_AngleReleaseTorqueThread = false,  \
-						s_SpeedReleaseTorqueThread = false;
+			s_SpeedReleaseTorqueThread = false;
 
 static pthread_mutex_t s_SharedMutex = PTHREAD_MUTEX_INITIALIZER;
 
