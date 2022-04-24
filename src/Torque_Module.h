@@ -91,7 +91,7 @@ extern bool g_TwoSpeed;
  ***********************************************/
 
 /** @brief The function returns a random value in between
- * 		   MIN_TIMER_COUNT and MAX_TIMER_COUNT millisecond..
+ * 	    MIN_TIMER_COUNT and MAX_TIMER_COUNT millisecond..
  *  @param[in]
  *  @param[ret] milliseconds elapsed between hypothetical consecutive rotations.
  *  @note
@@ -114,8 +114,8 @@ unsigned int get_rpm_based_speed(unsigned int timer_counts);
 unsigned int get_fixed_speed(void);
 
 /** @brief The function returns a random value in between 0 and 100.
- * 		   The applied throttle is between 0 and 100% of the total mechanical
- * 		   capacity of the throttle pedal.
+ * 	   The applied throttle is between 0 and 100% of the total mechanical
+ * 	   capacity of the throttle pedal.
  *  @param[in]
  *  @param[ret] Applied Throttle.
  *  @note
@@ -123,7 +123,7 @@ unsigned int get_fixed_speed(void);
 int get_user_throttle_input(void);
 
 /** @brief The function returns angle between 0 and 30 degrees based
- *		   on applied throttle from 0% to 100% of its mechanical range.
+ *	    on applied throttle from 0% to 100% of its mechanical range.
  *  @param[in]  Applied Throttle.
  *  @param[ret] Pedal Angle.
  *  @note
@@ -157,12 +157,12 @@ float get_torque_two_speed(float angle, SpeedLevels _SpeedLevel);
 float get_torque_rpm_based_speed(float angle, unsigned int speed);
 
 /** @brief This function simply extrapolates the data of the provided graph,
- * 				and fills up a hypothetical torque value array based on the two
- * 				speed levels (SPEED_AT_REST/SPEED_AT_MOVE KPH) and Percentage of throttle angle capacity.
- * 				This initialization is performed to skip non-trivial calculation at
- * 				the run-time so as to increase performance even further.
- * 				This is just one of the ways to do this kind of task and is here only
- * 				for Demo purposes.
+ * 	   and fills up a hypothetical torque value array based on the two
+ * 	   speed levels (SPEED_AT_REST/SPEED_AT_MOVE KPH) and Percentage of throttle angle capacity.
+ * 	   This initialization is performed to skip non-trivial calculation at
+ * 	   the run-time so as to increase performance even further.
+ * 	   This is just one of the ways to do this kind of task and is here only
+ * 	   for Demo purposes.
  *  @param[in]
  *  @param[ret]
  *  @note

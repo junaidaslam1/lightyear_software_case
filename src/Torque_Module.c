@@ -16,11 +16,11 @@ static float s_var_speed_torque_0_deg[MAX_POSSIBLE_SPEED]	=	{0};
 int get_user_throttle_input(void)
 /**
  * Description: The function returns a random value in between 0 and 100.
- * 				The applied throttle is between 0 and 100% of the total mechanical
- * 				capacity of the throttle pedal.
+ * 		The applied throttle is between 0 and 100% of the total mechanical
+ * 		capacity of the throttle pedal.
  * Inputs:
  * Output:
- * Return: 		applied_throttle
+ * Return: 	applied_throttle
  */
 {
 	srand(time(0));
@@ -34,10 +34,10 @@ int get_user_throttle_input(void)
 float get_pedal_angle(unsigned int throttle_applied)
 /**
  * Description: The function returns angle between 0 and 30 degrees based
- * 				on applied throttle from 0% to 100% of its mechanical range.
- * Inputs: 		applied_throttle
+ * 		on applied throttle from 0% to 100% of its mechanical range.
+ * Inputs: 	applied_throttle
  * Output:
- * Return: 		pedal_angle
+ * Return: 	pedal_angle
  */
 {
 	return (float)((float)throttle_applied/MAX_THROTTLE_POSSIBLE)*MAX_ANGLE;
@@ -47,9 +47,9 @@ float calc_adc_value(adc_channel_id_t inID, float angle)
 /**
  * Description: This function returns ADC value from specific channel
  * Inputs:      adc_channel_id_t (inID)
- * 		 :		angle w.r.t applied throttle
+ * 	:	angle w.r.t applied throttle
  * output:
- * return: 		ADC value based on angle of applied throttle and selected channel.
+ * return: 	ADC value based on angle of applied throttle and selected channel.
  */
 {
 	switch(inID) {
@@ -73,9 +73,9 @@ float calc_adc_value(adc_channel_id_t inID, float angle)
 unsigned int get_rotation_timer_count(void)
 /**
  * Description: The function returns a random value in between
- * 				MIN_TIMER_COUNT and MAX_TIMER_COUNT millisecond.
+ * 		MIN_TIMER_COUNT and MAX_TIMER_COUNT millisecond.
  * Inputs:
- * output: 		milliseconds elapsed between consecutive rotations
+ * output: 	milliseconds elapsed between consecutive rotations
  */
 {
 	srand(time(0));
@@ -85,10 +85,10 @@ unsigned int get_rotation_timer_count(void)
 static unsigned int get_rpm(unsigned int timer_counts)
 /**
  * Description: This function returns rotations per minute of the engine.
- * Inputs:		timer_counts is the time in millisecond elapsed between
- * 				two consecutive rotation interrupts or signals captured via free running timer.
+ * Inputs:	timer_counts is the time in millisecond elapsed between
+ * 		two consecutive rotation interrupts or signals captured via free running timer.
  * output:
- * return: 		Speed of the vehicle
+ * return: 	Speed of the vehicle
  */
 {
 	return ((float)1/((float)timer_counts/MILLISECONDS_IN_SECOND))*SECONDS_IN_A_MINUTE;
@@ -97,10 +97,10 @@ static unsigned int get_rpm(unsigned int timer_counts)
 unsigned int get_rpm_based_speed(unsigned int timer_counts)
 /**
  * Description: This function returns speed of the vehicle
- * Inputs:		timer_counts is the time in millisecond elapsed between two consecutive rotation interrupts,
- * 				or signals captured via timer.
+ * Inputs:	timer_counts is the time in millisecond elapsed between two consecutive rotation interrupts,
+ * 		or signals captured via timer.
  * output:
- * return: 		Speed of the vehicle
+ * return: 	Speed of the vehicle
  */
 {
 	#if !CALC_SPEED_FROM_RPM
@@ -116,7 +116,7 @@ unsigned int get_fixed_speed(void)
  * Description: This function returns speed of the vehicle between two fixed values [SPEED_AT_REST and SPEED_AT_MOVE]
  * Inputs:
  * output:
- * return: 		Speed of the vehicle
+ * return: 	Speed of the vehicle
  */
 {
 	srand(time(0));
@@ -126,10 +126,10 @@ unsigned int get_fixed_speed(void)
 float get_torque_two_speed(float angle, SpeedLevels _SpeedLevel)
 /**
  * Description: This function returns torque with respect to two speed levels and exerted angle
- * Inputs: 		angle
- * 		 : 		speed
+ * Inputs: 	angle
+ * 	: 	speed
  * Output:
- * return: 		torque
+ * return: 	torque
  */
 {
 	unsigned int lv_Throttle = (unsigned int)(((float)angle/MAX_ANGLE)*MAX_THROTTLE_POSSIBLE);
@@ -154,17 +154,17 @@ float get_torque_two_speed(float angle, SpeedLevels _SpeedLevel)
 float get_torque_rpm_based_speed(float angle, unsigned int speed)
 /**
  * Description: This function returns torque with respect to speed and exerted angle
- * 				This is calculated with hypothetically calculated difference of torque values
- * 				at 0% throttle between SPEED_AT_REST and SPEED_AT_MOVE assuming SPEED_AT_MOVE will be highest speed.
- * Inputs: 		angle
- * 		 : 		speed
+ * 		This is calculated with hypothetically calculated difference of torque values
+ * 		at 0% throttle between SPEED_AT_REST and SPEED_AT_MOVE assuming SPEED_AT_MOVE will be highest speed.
+ * Inputs: 	angle
+ * 	: 	speed
  * Output:
- * return: 		torque
+ * return: 	torque
  */
 {
 	unsigned int lv_throttle_applied 	=	(((float)angle/MAX_ANGLE)*MAX_THROTTLE_POSSIBLE);
-	float lv_torque_step				=	(TORQUE_AT_MAX_ANGLE - s_var_speed_torque_0_deg[speed])/MAX_THROTTLE_POSSIBLE;
-	float lv_torque						=	s_var_speed_torque_0_deg[speed];
+	float lv_torque_step			=	(TORQUE_AT_MAX_ANGLE - s_var_speed_torque_0_deg[speed])/MAX_THROTTLE_POSSIBLE;
+	float lv_torque			=	s_var_speed_torque_0_deg[speed];
 
 	for(int throttle_applied = 1; throttle_applied <= lv_throttle_applied; throttle_applied++) {
 		lv_torque	+=	lv_torque_step;
@@ -180,12 +180,12 @@ float get_torque_rpm_based_speed(float angle, unsigned int speed)
 void init_two_speed_torque_data(void)
 /**
  * Description: This function simply extrapolates the data of the provided graph,
- * 				and fills up a hypothetical torque value array based on the two
- * 				speed levels (0/50 KPH) and Percentage of throttle angle capacity.
- * 				This initialization is performed to skip non-trivial calculation at
- * 				the run-time so as to increase performance even further.
- * 				This is just one of the ways to do this kind of task and is here only
- * 				for Demo purposes.
+ * 		and fills up a hypothetical torque value array based on the two
+ * 		speed levels (0/50 KPH) and Percentage of throttle angle capacity.
+ * 		This initialization is performed to skip non-trivial calculation at
+ * 		the run-time so as to increase performance even further.
+ * 		This is just one of the ways to do this kind of task and is here only
+ * 		for Demo purposes.
  * Inputs:
  * Output:
  * return:
@@ -199,7 +199,7 @@ void init_two_speed_torque_data(void)
 	Torque_Step_Per_Angle[Moving] 	= 	(float)(TORQUE_AT_MAX_ANGLE-TORQUE_AT_50KM_0_DEG)/MAX_THROTTLE_POSSIBLE;
 
 	s_torque_filler.pvRestingTorqueFiller[0]	=	TORQUE_AT_REST_0_DEG;
-	s_torque_filler.pvMovingTorqueFiller[0]		=	TORQUE_AT_50KM_0_DEG;
+	s_torque_filler.pvMovingTorqueFiller[0]	=	TORQUE_AT_50KM_0_DEG;
 
 	#if DEBUG
 		printf("ThrottlePercent:%d RestingTorque:%f MovingTorque:%f\n", 0, \
