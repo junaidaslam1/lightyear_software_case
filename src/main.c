@@ -204,12 +204,14 @@ void* TorqueCalc_Thread(void *args)
 	    		printf("Speed:%uKm/h Throttle Angle:%.2fDeg Torque:%dNm ADC1:%u ADC2:%u\n",
 	    				s_Speed, s_Angle, s_Torque, lvADC1, lvADC2);
 
+	    		s_Speed	=	s_Angle	=	s_Torque	=	0.0;
+
 				pthread_mutex_lock(&s_SharedMutex);
 				s_AngleReleaseTorqueThread	=	false;
 				s_SpeedReleaseTorqueThread	=	false;
 				pthread_mutex_unlock(&s_SharedMutex);
 			}
-			usleep(500000);
+			usleep(1000000);
 		}
 	}
 	return NULL;
@@ -324,7 +326,7 @@ int main(int argc, char *argv[])
 		g_ThreadedImplementation = true;
 		printf("Getting with multi-threaded implementation\n");
 	}
-	else if(strcmp(argv[1], "pl") == 0)
+	else if(strcmp(argv[2], "pl") == 0)
 	{
 		g_ThreadedImplementation = false;
 		printf("Getting torque with plain implementation\n");
