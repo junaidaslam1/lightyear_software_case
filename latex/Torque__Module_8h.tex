@@ -1,0 +1,348 @@
+\hypertarget{Torque__Module_8h}{}\doxysection{src/\+Torque\+\_\+\+Module.h File Reference}
+\label{Torque__Module_8h}\index{src/Torque\_Module.h@{src/Torque\_Module.h}}
+
+
+Header file for declarations.  
+
+
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}drivers/adc\+\_\+driver/adc\+\_\+driver.\+h\char`\"{}}\newline
+Include dependency graph for Torque\+\_\+\+Module.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=264pt]{Torque__Module_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=282pt]{Torque__Module_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structTorqueFiller__t}{Torque\+Filler\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{Torque__Module_8h_a05c7439f74d27e29fa9a96442878d834}\label{Torque__Module_8h_a05c7439f74d27e29fa9a96442878d834}} 
+\#define {\bfseries M\+A\+X\+\_\+\+T\+H\+R\+O\+T\+T\+L\+E\+\_\+\+P\+O\+S\+S\+I\+B\+LE}~100
+\item 
+\mbox{\Hypertarget{Torque__Module_8h_a96beb06c541c15fe538dc1fa59614dde}\label{Torque__Module_8h_a96beb06c541c15fe538dc1fa59614dde}} 
+\#define {\bfseries M\+A\+X\+\_\+\+T\+H\+R\+O\+T\+T\+L\+E\+\_\+\+D\+A\+T\+A\+\_\+\+C\+O\+U\+NT}~101
+\item 
+\mbox{\Hypertarget{Torque__Module_8h_afd31a2ac2559fe69dd46c0ed36ea3f8a}\label{Torque__Module_8h_afd31a2ac2559fe69dd46c0ed36ea3f8a}} 
+\#define {\bfseries R\+O\+T\+A\+T\+I\+N\+G\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+R\+A\+D\+I\+US}~0.\+5
+\item 
+\mbox{\Hypertarget{Torque__Module_8h_ad28e8c8f5f8ed30c43cd9a7dc21f79f3}\label{Torque__Module_8h_ad28e8c8f5f8ed30c43cd9a7dc21f79f3}} 
+\#define {\bfseries R\+O\+T\+A\+T\+I\+N\+G\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+C\+I\+R\+C\+UM}~2$\ast$3.\+14$\ast$R\+O\+T\+A\+T\+I\+N\+G\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+R\+A\+D\+I\+US
+\item 
+\mbox{\Hypertarget{Torque__Module_8h_a78a395dd2a41b54d01335bb1633a3865}\label{Torque__Module_8h_a78a395dd2a41b54d01335bb1633a3865}} 
+\#define {\bfseries S\+E\+C\+O\+N\+D\+S\+\_\+\+I\+N\+\_\+\+H\+O\+UR}~3600
+\item 
+\mbox{\Hypertarget{Torque__Module_8h_af234288e5f32b502315a61a80f96d86e}\label{Torque__Module_8h_af234288e5f32b502315a61a80f96d86e}} 
+\#define {\bfseries M\+E\+T\+E\+R\+S\+\_\+\+I\+N\+\_\+\+KM}~1000
+\item 
+\mbox{\Hypertarget{Torque__Module_8h_a8c42cd80fc6a46821c65a20c4aa81110}\label{Torque__Module_8h_a8c42cd80fc6a46821c65a20c4aa81110}} 
+\#define {\bfseries M\+I\+L\+L\+I\+S\+E\+C\+O\+N\+D\+S\+\_\+\+I\+N\+\_\+\+S\+E\+C\+O\+ND}~1000
+\item 
+\mbox{\Hypertarget{Torque__Module_8h_aaa6eb0efa8fc8bc65f7c637d9e2f95fd}\label{Torque__Module_8h_aaa6eb0efa8fc8bc65f7c637d9e2f95fd}} 
+\#define {\bfseries S\+E\+C\+O\+N\+D\+S\+\_\+\+I\+N\+\_\+\+A\+\_\+\+M\+I\+N\+U\+TE}~60
+\item 
+\mbox{\Hypertarget{Torque__Module_8h_a961656a354d076e889de977ad97eb6af}\label{Torque__Module_8h_a961656a354d076e889de977ad97eb6af}} 
+\#define {\bfseries M\+I\+N\+U\+T\+E\+S\+\_\+\+I\+N\+\_\+\+A\+\_\+\+H\+O\+UR}~60
+\item 
+\mbox{\Hypertarget{Torque__Module_8h_a2432b1fadce88894d9cc6cb77cfbb873}\label{Torque__Module_8h_a2432b1fadce88894d9cc6cb77cfbb873}} 
+\#define {\bfseries M\+A\+X\+\_\+\+T\+I\+M\+E\+R\+\_\+\+C\+O\+U\+NT}~1000
+\item 
+\mbox{\Hypertarget{Torque__Module_8h_a5934286bd549a2a8244c7090f992b099}\label{Torque__Module_8h_a5934286bd549a2a8244c7090f992b099}} 
+\#define {\bfseries M\+I\+N\+\_\+\+T\+I\+M\+E\+R\+\_\+\+C\+O\+U\+NT}~220
+\item 
+\mbox{\Hypertarget{Torque__Module_8h_a50325563168ba1c3159a0811adeeb568}\label{Torque__Module_8h_a50325563168ba1c3159a0811adeeb568}} 
+\#define {\bfseries A\+D\+C1\+\_\+\+M\+I\+N\+\_\+\+V\+O\+LT}~0.\+5
+\item 
+\mbox{\Hypertarget{Torque__Module_8h_aa6d050ac0cee0697ae8dc052b6e43160}\label{Torque__Module_8h_aa6d050ac0cee0697ae8dc052b6e43160}} 
+\#define {\bfseries A\+D\+C2\+\_\+\+M\+I\+N\+\_\+\+V\+O\+LT}~1.\+0
+\item 
+\mbox{\Hypertarget{Torque__Module_8h_a1ead0025204fb0d3917812a8d65812cc}\label{Torque__Module_8h_a1ead0025204fb0d3917812a8d65812cc}} 
+\#define {\bfseries S\+I\+M\+U\+L\+A\+T\+I\+O\+N\+\_\+\+S\+P\+E\+E\+D\+\_\+\+L\+E\+V\+E\+LS}~2
+\item 
+\mbox{\Hypertarget{Torque__Module_8h_a48f11d7c929562d1b75fcd4e16b76f02}\label{Torque__Module_8h_a48f11d7c929562d1b75fcd4e16b76f02}} 
+\#define {\bfseries S\+P\+E\+E\+D\+\_\+\+A\+T\+\_\+\+R\+E\+ST}~0
+\item 
+\mbox{\Hypertarget{Torque__Module_8h_a60cf19755d8b5998be232d2ab9b112be}\label{Torque__Module_8h_a60cf19755d8b5998be232d2ab9b112be}} 
+\#define {\bfseries S\+P\+E\+E\+D\+\_\+\+A\+T\+\_\+\+M\+O\+VE}~50
+\item 
+\mbox{\Hypertarget{Torque__Module_8h_aeee0426dae9fd6ecb0d5137766e68247}\label{Torque__Module_8h_aeee0426dae9fd6ecb0d5137766e68247}} 
+\#define {\bfseries T\+W\+O\+\_\+\+S\+P\+E\+E\+D\+\_\+\+D\+U\+M\+M\+Y\+\_\+\+T\+H\+R\+E\+S\+H\+O\+LD}~25
+\item 
+\mbox{\Hypertarget{Torque__Module_8h_af5cc136dbc86df89de56c3aa421c12ee}\label{Torque__Module_8h_af5cc136dbc86df89de56c3aa421c12ee}} 
+\#define {\bfseries M\+I\+N\+\_\+\+A\+N\+G\+LE}~0
+\item 
+\mbox{\Hypertarget{Torque__Module_8h_af3c82099d63a2d91d68bd62d954059c7}\label{Torque__Module_8h_af3c82099d63a2d91d68bd62d954059c7}} 
+\#define {\bfseries M\+A\+X\+\_\+\+A\+N\+G\+LE}~30
+\item 
+\mbox{\Hypertarget{Torque__Module_8h_abd3a1d256341f9e704b3dccafcba9780}\label{Torque__Module_8h_abd3a1d256341f9e704b3dccafcba9780}} 
+\#define {\bfseries T\+O\+R\+Q\+U\+E\+\_\+\+A\+T\+\_\+\+R\+E\+S\+T\+\_\+0\+\_\+\+D\+EG}~0
+\item 
+\mbox{\Hypertarget{Torque__Module_8h_a55771f5df285b5274a3f04995e34b4ea}\label{Torque__Module_8h_a55771f5df285b5274a3f04995e34b4ea}} 
+\#define {\bfseries T\+O\+R\+Q\+U\+E\+\_\+\+A\+T\+\_\+50\+K\+M\+\_\+0\+\_\+\+D\+EG}~-\/30
+\item 
+\mbox{\Hypertarget{Torque__Module_8h_ac82188da81eba4114dec65195ad8ad33}\label{Torque__Module_8h_ac82188da81eba4114dec65195ad8ad33}} 
+\#define {\bfseries T\+O\+R\+Q\+U\+E\+\_\+\+A\+T\+\_\+\+M\+A\+X\+\_\+\+A\+N\+G\+LE}~120
+\item 
+\mbox{\Hypertarget{Torque__Module_8h_a1176a0f8912cafc4bd05f4e4abc90d20}\label{Torque__Module_8h_a1176a0f8912cafc4bd05f4e4abc90d20}} 
+\#define {\bfseries M\+A\+X\+\_\+\+P\+O\+S\+S\+I\+B\+L\+E\+\_\+\+S\+P\+E\+ED}~50
+\item 
+\mbox{\Hypertarget{Torque__Module_8h_afbafc9783901ce1508a0bb762967eb7e}\label{Torque__Module_8h_afbafc9783901ce1508a0bb762967eb7e}} 
+\#define {\bfseries V\+A\+R\+\_\+\+S\+P\+E\+E\+D\+\_\+\+T\+O\+R\+Q\+U\+E\+\_\+\+D\+I\+F\+F\+\_\+\+A\+T\+\_\+0\+\_\+\+T\+H\+R\+O\+T\+T\+LE}~(0-\/(-\/30))/M\+A\+X\+\_\+\+P\+O\+S\+S\+I\+B\+L\+E\+\_\+\+S\+P\+E\+ED
+\item 
+\mbox{\Hypertarget{Torque__Module_8h_af3d77da6ae18924a8d4c2891d4d1b01a}\label{Torque__Module_8h_af3d77da6ae18924a8d4c2891d4d1b01a}} 
+\#define {\bfseries T\+O\+R\+Q\+U\+E\+\_\+\+E\+R\+R\+O\+R\+\_\+\+V\+A\+L\+UE}~-\/50
+\item 
+\mbox{\Hypertarget{Torque__Module_8h_a810b46bdaa73057d834142229111adc5}\label{Torque__Module_8h_a810b46bdaa73057d834142229111adc5}} 
+\#define {\bfseries A\+D\+C\+\_\+\+E\+R\+R\+O\+R\+\_\+\+V\+A\+L\+UE}~0
+\item 
+\mbox{\Hypertarget{Torque__Module_8h_a9cc762bf05ce7dbce96dd5df518b892b}\label{Torque__Module_8h_a9cc762bf05ce7dbce96dd5df518b892b}} 
+\#define {\bfseries T\+H\+R\+O\+T\+T\+L\+E\+\_\+\+E\+R\+R\+\_\+\+T\+H\+R\+E\+S\+H\+O\+LD}~5
+\item 
+\mbox{\Hypertarget{Torque__Module_8h_adc126ba5f633c8c9b4cf035adf7a4515}\label{Torque__Module_8h_adc126ba5f633c8c9b4cf035adf7a4515}} 
+\#define {\bfseries S\+P\+E\+E\+D\+\_\+\+E\+R\+R\+\_\+\+T\+H\+R\+E\+S\+H\+O\+LD}~M\+A\+X\+\_\+\+P\+O\+S\+S\+I\+B\+L\+E\+\_\+\+S\+P\+E\+ED+1
+\item 
+\mbox{\Hypertarget{Torque__Module_8h_a9fac0630139657a741bca07bd53d3b70}\label{Torque__Module_8h_a9fac0630139657a741bca07bd53d3b70}} 
+\#define {\bfseries A\+N\+G\+L\+E\+\_\+\+E\+R\+R\+\_\+\+V\+A\+L\+UE}~-\/30
+\item 
+\mbox{\Hypertarget{Torque__Module_8h_a0a40af0f58b9ab4c91926f03e4740676}\label{Torque__Module_8h_a0a40af0f58b9ab4c91926f03e4740676}} 
+\#define {\bfseries M\+A\+X\+\_\+\+A\+D\+C\+\_\+\+V\+O\+L\+T\+A\+GE}~5000
+\item 
+\mbox{\Hypertarget{Torque__Module_8h_a00978ca9e8220475258dcbbbb7d29129}\label{Torque__Module_8h_a00978ca9e8220475258dcbbbb7d29129}} 
+\#define {\bfseries A\+D\+C\+\_\+\+R\+E\+S\+O\+L\+U\+T\+I\+ON}~65536
+\item 
+\mbox{\Hypertarget{Torque__Module_8h_a61bb1f69817bf70094d1c42595ba89b7}\label{Torque__Module_8h_a61bb1f69817bf70094d1c42595ba89b7}} 
+\#define {\bfseries A\+D\+C\+\_\+\+M\+U\+L\+T\+I\+P\+L\+I\+ER}~(A\+D\+C\+\_\+\+R\+E\+S\+O\+L\+U\+T\+I\+ON/M\+A\+X\+\_\+\+A\+D\+C\+\_\+\+V\+O\+L\+T\+A\+GE)$\ast$1000
+\item 
+\mbox{\Hypertarget{Torque__Module_8h_aa305ccfa36a31d28fce41b26d1f9a3e8}\label{Torque__Module_8h_aa305ccfa36a31d28fce41b26d1f9a3e8}} 
+\#define {\bfseries A\+D\+C\+\_\+\+L\+P\+F\+\_\+\+N\+R\+\_\+\+O\+F\+\_\+\+S\+A\+M\+P\+L\+ES}~25
+\item 
+\mbox{\Hypertarget{Torque__Module_8h_aba51915c87d64af47fb1cc59348961c9}\label{Torque__Module_8h_aba51915c87d64af47fb1cc59348961c9}} 
+\#define {\bfseries OK}~0
+\item 
+\mbox{\Hypertarget{Torque__Module_8h_aa915e8300da7583ca4d3b00103a7575f}\label{Torque__Module_8h_aa915e8300da7583ca4d3b00103a7575f}} 
+\#define {\bfseries N\+OK}~-\/1
+\item 
+\mbox{\Hypertarget{Torque__Module_8h_ad72dbcf6d0153db1b8d8a58001feed83}\label{Torque__Module_8h_ad72dbcf6d0153db1b8d8a58001feed83}} 
+\#define {\bfseries D\+E\+B\+UG}~0
+\item 
+\mbox{\Hypertarget{Torque__Module_8h_af957cd89cd6858fb780b49f252a94a31}\label{Torque__Module_8h_af957cd89cd6858fb780b49f252a94a31}} 
+\#define {\bfseries C\+A\+L\+C\+\_\+\+S\+P\+E\+E\+D\+\_\+\+F\+R\+O\+M\+\_\+\+R\+PM}~1
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{Torque__Module_8h_a81d28ec8cff4ec93c023b9f61ec3b627}\label{Torque__Module_8h_a81d28ec8cff4ec93c023b9f61ec3b627}} 
+enum {\bfseries Speed\+Levels} \{ {\bfseries Resting}, 
+{\bfseries Moving}, 
+{\bfseries \+\_\+\+Speed\+Levels}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+unsigned int \mbox{\hyperlink{Torque__Module_8h_a25eda3c9416ca6dae698f2c37d0083b0}{get\+\_\+rotation\+\_\+timer\+\_\+count}} (void)
+\begin{DoxyCompactList}\small\item\em The function returns a random value in between M\+I\+N\+\_\+\+T\+I\+M\+E\+R\+\_\+\+C\+O\+U\+NT and M\+A\+X\+\_\+\+T\+I\+M\+E\+R\+\_\+\+C\+O\+U\+NT millisecond.. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{Torque__Module_8h_ad9d27a12d8259888b706767d8408ece9}{get\+\_\+rpm\+\_\+based\+\_\+speed}} (unsigned int timer\+\_\+counts)
+\begin{DoxyCompactList}\small\item\em This function returns speed of the vehicle. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{Torque__Module_8h_a7f6880c8840011ce0b66d173dd4232b9}{get\+\_\+fixed\+\_\+speed}} (void)
+\begin{DoxyCompactList}\small\item\em This function returns speed of the vehicle between two fixed values \mbox{[}S\+P\+E\+E\+D\+\_\+\+A\+T\+\_\+\+R\+E\+ST and S\+P\+E\+E\+D\+\_\+\+A\+T\+\_\+\+M\+O\+VE\mbox{]}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{Torque__Module_8h_a37698963867ac53784f00397dc776d22}{get\+\_\+user\+\_\+throttle\+\_\+input}} (void)
+\begin{DoxyCompactList}\small\item\em The function returns a random value in between 0 and 100. The applied throttle is between 0 and 100\% of the total mechanical capacity of the throttle pedal. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{Torque__Module_8h_a9ece18c1eba212e3bb98b72098e72073}{get\+\_\+pedal\+\_\+angle}} (unsigned int throttle\+\_\+applied)
+\begin{DoxyCompactList}\small\item\em The function returns angle between 0 and 30 degrees based on applied throttle from 0\% to 100\% of its mechanical range. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{adc__driver_8h_a76fbc04bf3971a904308657d04bd4211}{adc\+\_\+value\+\_\+t}} \mbox{\hyperlink{Torque__Module_8h_af70bbc063c004efc8daf8da84a3f0b45}{calc\+\_\+adc\+\_\+value}} (\mbox{\hyperlink{adc__driver_8h_af09eea452dd906601ddbbdaddc0c4c6b}{adc\+\_\+channel\+\_\+id\+\_\+t}} in\+ID, float angle)
+\begin{DoxyCompactList}\small\item\em This function returns A\+DC value from specific channel. \end{DoxyCompactList}\item 
+signed char \mbox{\hyperlink{Torque__Module_8h_a1bc13ffbab3a0c616e2a17e1c9c78643}{get\+\_\+torque\+\_\+two\+\_\+speed}} (float angle, Speed\+Levels \+\_\+\+Speed\+Level)
+\begin{DoxyCompactList}\small\item\em This function returns torque with respect to two speed levels and exerted angle. \end{DoxyCompactList}\item 
+signed char \mbox{\hyperlink{Torque__Module_8h_aa2973290856b4a3fdae434dfdd5017d4}{get\+\_\+torque\+\_\+rpm\+\_\+based\+\_\+speed}} (float angle, unsigned int speed)
+\begin{DoxyCompactList}\small\item\em This function returns torque with respect to speed and exerted angle This is calculated with hypothetically calculated difference of torque values at 0\% throttle between S\+P\+E\+E\+D\+\_\+\+A\+T\+\_\+\+R\+E\+ST and S\+P\+E\+E\+D\+\_\+\+A\+T\+\_\+\+M\+O\+VE assuming S\+P\+E\+E\+D\+\_\+\+A\+T\+\_\+\+M\+O\+VE will be highest speed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Torque__Module_8h_ace05429d248ee3ce6bb2a84a7cddf766}{init\+\_\+two\+\_\+speed\+\_\+torque\+\_\+data}} (void)
+\begin{DoxyCompactList}\small\item\em This function simply extrapolates the data of the provided graph, and fills up a hypothetical torque value array based on the two speed levels (S\+P\+E\+E\+D\+\_\+\+A\+T\+\_\+\+R\+E\+S\+T/\+S\+P\+E\+E\+D\+\_\+\+A\+T\+\_\+\+M\+O\+VE K\+PH) and Percentage of throttle angle capacity. This initialization is performed to skip non-\/trivial calculation at the run-\/time so as to increase performance even further. This is just one of the ways to do this kind of task and is here only for Demo purposes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for declarations. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{Torque__Module_8h_af70bbc063c004efc8daf8da84a3f0b45}\label{Torque__Module_8h_af70bbc063c004efc8daf8da84a3f0b45}} 
+\index{Torque\_Module.h@{Torque\_Module.h}!calc\_adc\_value@{calc\_adc\_value}}
+\index{calc\_adc\_value@{calc\_adc\_value}!Torque\_Module.h@{Torque\_Module.h}}
+\doxysubsubsection{\texorpdfstring{calc\_adc\_value()}{calc\_adc\_value()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{adc__driver_8h_a76fbc04bf3971a904308657d04bd4211}{adc\+\_\+value\+\_\+t}} calc\+\_\+adc\+\_\+value (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{adc__driver_8h_af09eea452dd906601ddbbdaddc0c4c6b}{adc\+\_\+channel\+\_\+id\+\_\+t}}}]{in\+ID,  }\item[{float}]{angle }\end{DoxyParamCaption})}
+
+
+
+This function returns A\+DC value from specific channel. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em adc\+\_\+channel\+\_\+id\+\_\+t.} & \\
+\hline
+\mbox{\texttt{ in}}  & {\em angle} & w.\+r.\+t applied throttle. \\
+\hline
+ & {\em \mbox{[}ret\mbox{]}} & adc\+\_\+value\+\_\+t \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+
+\end{DoxyNote}
+Description\+: This function returns A\+DC value from specific channel Inputs\+: adc\+\_\+channel\+\_\+id\+\_\+t (in\+ID) \+: angle w.\+r.\+t applied throttle output\+: return\+: adc\+\_\+value\+\_\+t \mbox{\Hypertarget{Torque__Module_8h_a7f6880c8840011ce0b66d173dd4232b9}\label{Torque__Module_8h_a7f6880c8840011ce0b66d173dd4232b9}} 
+\index{Torque\_Module.h@{Torque\_Module.h}!get\_fixed\_speed@{get\_fixed\_speed}}
+\index{get\_fixed\_speed@{get\_fixed\_speed}!Torque\_Module.h@{Torque\_Module.h}}
+\doxysubsubsection{\texorpdfstring{get\_fixed\_speed()}{get\_fixed\_speed()}}
+{\footnotesize\ttfamily unsigned int get\+\_\+fixed\+\_\+speed (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function returns speed of the vehicle between two fixed values \mbox{[}S\+P\+E\+E\+D\+\_\+\+A\+T\+\_\+\+R\+E\+ST and S\+P\+E\+E\+D\+\_\+\+A\+T\+\_\+\+M\+O\+VE\mbox{]}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em } & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{Torque__Module_8h_a9ece18c1eba212e3bb98b72098e72073}\label{Torque__Module_8h_a9ece18c1eba212e3bb98b72098e72073}} 
+\index{Torque\_Module.h@{Torque\_Module.h}!get\_pedal\_angle@{get\_pedal\_angle}}
+\index{get\_pedal\_angle@{get\_pedal\_angle}!Torque\_Module.h@{Torque\_Module.h}}
+\doxysubsubsection{\texorpdfstring{get\_pedal\_angle()}{get\_pedal\_angle()}}
+{\footnotesize\ttfamily float get\+\_\+pedal\+\_\+angle (\begin{DoxyParamCaption}\item[{unsigned int}]{throttle\+\_\+applied }\end{DoxyParamCaption})}
+
+
+
+The function returns angle between 0 and 30 degrees based on applied throttle from 0\% to 100\% of its mechanical range. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Applied} & Throttle. \\
+\hline
+ & {\em \mbox{[}ret\mbox{]}} & Pedal Angle. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+
+\end{DoxyNote}
+Description\+: The function returns angle between 0 and 30 degrees based on applied throttle from 0\% to 100\% of its mechanical range. Inputs\+: applied\+\_\+throttle Output\+: Return\+: pedal\+\_\+angle \mbox{\Hypertarget{Torque__Module_8h_a25eda3c9416ca6dae698f2c37d0083b0}\label{Torque__Module_8h_a25eda3c9416ca6dae698f2c37d0083b0}} 
+\index{Torque\_Module.h@{Torque\_Module.h}!get\_rotation\_timer\_count@{get\_rotation\_timer\_count}}
+\index{get\_rotation\_timer\_count@{get\_rotation\_timer\_count}!Torque\_Module.h@{Torque\_Module.h}}
+\doxysubsubsection{\texorpdfstring{get\_rotation\_timer\_count()}{get\_rotation\_timer\_count()}}
+{\footnotesize\ttfamily unsigned int get\+\_\+rotation\+\_\+timer\+\_\+count (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+The function returns a random value in between M\+I\+N\+\_\+\+T\+I\+M\+E\+R\+\_\+\+C\+O\+U\+NT and M\+A\+X\+\_\+\+T\+I\+M\+E\+R\+\_\+\+C\+O\+U\+NT millisecond.. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em } & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{Torque__Module_8h_ad9d27a12d8259888b706767d8408ece9}\label{Torque__Module_8h_ad9d27a12d8259888b706767d8408ece9}} 
+\index{Torque\_Module.h@{Torque\_Module.h}!get\_rpm\_based\_speed@{get\_rpm\_based\_speed}}
+\index{get\_rpm\_based\_speed@{get\_rpm\_based\_speed}!Torque\_Module.h@{Torque\_Module.h}}
+\doxysubsubsection{\texorpdfstring{get\_rpm\_based\_speed()}{get\_rpm\_based\_speed()}}
+{\footnotesize\ttfamily unsigned int get\+\_\+rpm\+\_\+based\+\_\+speed (\begin{DoxyParamCaption}\item[{unsigned int}]{timer\+\_\+counts }\end{DoxyParamCaption})}
+
+
+
+This function returns speed of the vehicle. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Timer\+\_\+counts} & is the time in millisecond elapsed between two consecutive rotation interrupts, or signals captured via timer. \\
+\hline
+ & {\em \mbox{[}ret\mbox{]}} & Speed of the vehicle. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+
+\end{DoxyNote}
+Description\+: This function returns speed of the vehicle Inputs\+: timer\+\_\+counts is the time in millisecond elapsed between two consecutive rotation interrupts, or signals captured via timer. output\+: return\+: Speed of the vehicle \mbox{\Hypertarget{Torque__Module_8h_aa2973290856b4a3fdae434dfdd5017d4}\label{Torque__Module_8h_aa2973290856b4a3fdae434dfdd5017d4}} 
+\index{Torque\_Module.h@{Torque\_Module.h}!get\_torque\_rpm\_based\_speed@{get\_torque\_rpm\_based\_speed}}
+\index{get\_torque\_rpm\_based\_speed@{get\_torque\_rpm\_based\_speed}!Torque\_Module.h@{Torque\_Module.h}}
+\doxysubsubsection{\texorpdfstring{get\_torque\_rpm\_based\_speed()}{get\_torque\_rpm\_based\_speed()}}
+{\footnotesize\ttfamily signed char get\+\_\+torque\+\_\+rpm\+\_\+based\+\_\+speed (\begin{DoxyParamCaption}\item[{float}]{angle,  }\item[{unsigned int}]{speed }\end{DoxyParamCaption})}
+
+
+
+This function returns torque with respect to speed and exerted angle This is calculated with hypothetically calculated difference of torque values at 0\% throttle between S\+P\+E\+E\+D\+\_\+\+A\+T\+\_\+\+R\+E\+ST and S\+P\+E\+E\+D\+\_\+\+A\+T\+\_\+\+M\+O\+VE assuming S\+P\+E\+E\+D\+\_\+\+A\+T\+\_\+\+M\+O\+VE will be highest speed. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em angle.} & \\
+\hline
+\mbox{\texttt{ in}}  & {\em speed.} & \\
+\hline
+ & {\em \mbox{[}ret\mbox{]}} & torque \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+
+\end{DoxyNote}
+Description\+: This function returns torque with respect to speed and exerted angle This is calculated with hypothetically calculated difference of torque values at 0\% throttle between S\+P\+E\+E\+D\+\_\+\+A\+T\+\_\+\+R\+E\+ST and S\+P\+E\+E\+D\+\_\+\+A\+T\+\_\+\+M\+O\+VE assuming S\+P\+E\+E\+D\+\_\+\+A\+T\+\_\+\+M\+O\+VE will be highest speed. Inputs\+: angle \+: speed Output\+: return\+: torque \mbox{\Hypertarget{Torque__Module_8h_a1bc13ffbab3a0c616e2a17e1c9c78643}\label{Torque__Module_8h_a1bc13ffbab3a0c616e2a17e1c9c78643}} 
+\index{Torque\_Module.h@{Torque\_Module.h}!get\_torque\_two\_speed@{get\_torque\_two\_speed}}
+\index{get\_torque\_two\_speed@{get\_torque\_two\_speed}!Torque\_Module.h@{Torque\_Module.h}}
+\doxysubsubsection{\texorpdfstring{get\_torque\_two\_speed()}{get\_torque\_two\_speed()}}
+{\footnotesize\ttfamily signed char get\+\_\+torque\+\_\+two\+\_\+speed (\begin{DoxyParamCaption}\item[{float}]{angle,  }\item[{Speed\+Levels}]{\+\_\+\+Speed\+Level }\end{DoxyParamCaption})}
+
+
+
+This function returns torque with respect to two speed levels and exerted angle. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em angle.} & \\
+\hline
+\mbox{\texttt{ in}}  & {\em \+\_\+\+Speed\+Level} & (Resting/\+Moving). \\
+\hline
+ & {\em \mbox{[}ret\mbox{]}} & torque \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+
+\end{DoxyNote}
+Description\+: This function returns torque with respect to two speed levels and exerted angle Inputs\+: angle \+: speed Output\+: return\+: torque \mbox{\Hypertarget{Torque__Module_8h_a37698963867ac53784f00397dc776d22}\label{Torque__Module_8h_a37698963867ac53784f00397dc776d22}} 
+\index{Torque\_Module.h@{Torque\_Module.h}!get\_user\_throttle\_input@{get\_user\_throttle\_input}}
+\index{get\_user\_throttle\_input@{get\_user\_throttle\_input}!Torque\_Module.h@{Torque\_Module.h}}
+\doxysubsubsection{\texorpdfstring{get\_user\_throttle\_input()}{get\_user\_throttle\_input()}}
+{\footnotesize\ttfamily int get\+\_\+user\+\_\+throttle\+\_\+input (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+The function returns a random value in between 0 and 100. The applied throttle is between 0 and 100\% of the total mechanical capacity of the throttle pedal. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em } & \\
+\hline
+\end{DoxyParams}
+Below 10\% of the max possible throttle (100\%) 0 is returned to indicate error just for demo.\mbox{\Hypertarget{Torque__Module_8h_ace05429d248ee3ce6bb2a84a7cddf766}\label{Torque__Module_8h_ace05429d248ee3ce6bb2a84a7cddf766}} 
+\index{Torque\_Module.h@{Torque\_Module.h}!init\_two\_speed\_torque\_data@{init\_two\_speed\_torque\_data}}
+\index{init\_two\_speed\_torque\_data@{init\_two\_speed\_torque\_data}!Torque\_Module.h@{Torque\_Module.h}}
+\doxysubsubsection{\texorpdfstring{init\_two\_speed\_torque\_data()}{init\_two\_speed\_torque\_data()}}
+{\footnotesize\ttfamily void init\+\_\+two\+\_\+speed\+\_\+torque\+\_\+data (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function simply extrapolates the data of the provided graph, and fills up a hypothetical torque value array based on the two speed levels (S\+P\+E\+E\+D\+\_\+\+A\+T\+\_\+\+R\+E\+S\+T/\+S\+P\+E\+E\+D\+\_\+\+A\+T\+\_\+\+M\+O\+VE K\+PH) and Percentage of throttle angle capacity. This initialization is performed to skip non-\/trivial calculation at the run-\/time so as to increase performance even further. This is just one of the ways to do this kind of task and is here only for Demo purposes. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em } & \\
+\hline
+\end{DoxyParams}

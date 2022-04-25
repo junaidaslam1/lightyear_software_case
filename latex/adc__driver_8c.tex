@@ -1,0 +1,94 @@
+\hypertarget{adc__driver_8c}{}\doxysection{src/drivers/adc\+\_\+driver/adc\+\_\+driver.c File Reference}
+\label{adc__driver_8c}\index{src/drivers/adc\_driver/adc\_driver.c@{src/drivers/adc\_driver/adc\_driver.c}}
+
+
+Source file for a (dummy) A\+DC driver.  
+
+
+{\ttfamily \#include \char`\"{}adc\+\_\+driver.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+Include dependency graph for adc\+\_\+driver.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=224pt]{adc__driver_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{adc__driver_8c_a6d8c948a7acbf8a2e9d86dfe163b7223}{adc\+\_\+read\+\_\+set\+\_\+output}} (\mbox{\hyperlink{adc__driver_8h_af09eea452dd906601ddbbdaddc0c4c6b}{adc\+\_\+channel\+\_\+id\+\_\+t}} id, \mbox{\hyperlink{adc__driver_8h_a76fbc04bf3971a904308657d04bd4211}{adc\+\_\+value\+\_\+t}} value, \mbox{\hyperlink{adc__driver_8h_aff7c9a0dc09ef3fbd1db3b87b80ad897}{adc\+\_\+return\+\_\+t}} return\+\_\+value)
+\begin{DoxyCompactList}\small\item\em Helper function for setting what is returned by \mbox{\hyperlink{adc__driver_8h_a682ae3cd07e3fd82eadf8fdbea9a0bf3}{adc\+\_\+read()}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{adc__driver_8h_aff7c9a0dc09ef3fbd1db3b87b80ad897}{adc\+\_\+return\+\_\+t}} \mbox{\hyperlink{adc__driver_8c_a355ef46c154384c4e79dda438fc05a9b}{adc\+\_\+init}} (\mbox{\hyperlink{adc__driver_8h_af09eea452dd906601ddbbdaddc0c4c6b}{adc\+\_\+channel\+\_\+id\+\_\+t}} id)
+\begin{DoxyCompactList}\small\item\em Initializes the A\+DC channel. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{adc__driver_8h_aff7c9a0dc09ef3fbd1db3b87b80ad897}{adc\+\_\+return\+\_\+t}} \mbox{\hyperlink{adc__driver_8c_a682ae3cd07e3fd82eadf8fdbea9a0bf3}{adc\+\_\+read}} (\mbox{\hyperlink{adc__driver_8h_af09eea452dd906601ddbbdaddc0c4c6b}{adc\+\_\+channel\+\_\+id\+\_\+t}} id, \mbox{\hyperlink{adc__driver_8h_a76fbc04bf3971a904308657d04bd4211}{adc\+\_\+value\+\_\+t}} $\ast$value)
+\begin{DoxyCompactList}\small\item\em Reads the value of the A\+DC channel. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Source file for a (dummy) A\+DC driver. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{adc__driver_8c_a355ef46c154384c4e79dda438fc05a9b}\label{adc__driver_8c_a355ef46c154384c4e79dda438fc05a9b}} 
+\index{adc\_driver.c@{adc\_driver.c}!adc\_init@{adc\_init}}
+\index{adc\_init@{adc\_init}!adc\_driver.c@{adc\_driver.c}}
+\doxysubsubsection{\texorpdfstring{adc\_init()}{adc\_init()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{adc__driver_8h_aff7c9a0dc09ef3fbd1db3b87b80ad897}{adc\+\_\+return\+\_\+t}} adc\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{adc__driver_8h_af09eea452dd906601ddbbdaddc0c4c6b}{adc\+\_\+channel\+\_\+id\+\_\+t}}}]{id }\end{DoxyParamCaption})}
+
+
+
+Initializes the A\+DC channel. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em id} & The ID of the A\+DC channel. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Whether the channel was initialized successfully or not. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{adc__driver_8c_a682ae3cd07e3fd82eadf8fdbea9a0bf3}\label{adc__driver_8c_a682ae3cd07e3fd82eadf8fdbea9a0bf3}} 
+\index{adc\_driver.c@{adc\_driver.c}!adc\_read@{adc\_read}}
+\index{adc\_read@{adc\_read}!adc\_driver.c@{adc\_driver.c}}
+\doxysubsubsection{\texorpdfstring{adc\_read()}{adc\_read()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{adc__driver_8h_aff7c9a0dc09ef3fbd1db3b87b80ad897}{adc\+\_\+return\+\_\+t}} adc\+\_\+read (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{adc__driver_8h_af09eea452dd906601ddbbdaddc0c4c6b}{adc\+\_\+channel\+\_\+id\+\_\+t}}}]{id,  }\item[{\mbox{\hyperlink{adc__driver_8h_a76fbc04bf3971a904308657d04bd4211}{adc\+\_\+value\+\_\+t}} $\ast$}]{value }\end{DoxyParamCaption})}
+
+
+
+Reads the value of the A\+DC channel. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em id} & The ID of the A\+DC channel. \\
+\hline
+\mbox{\texttt{ out}}  & {\em value} & The read A\+DC value, which is a value between 0 and 1023. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Whether the channel was initialized successfully or not. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{adc__driver_8c_a6d8c948a7acbf8a2e9d86dfe163b7223}\label{adc__driver_8c_a6d8c948a7acbf8a2e9d86dfe163b7223}} 
+\index{adc\_driver.c@{adc\_driver.c}!adc\_read\_set\_output@{adc\_read\_set\_output}}
+\index{adc\_read\_set\_output@{adc\_read\_set\_output}!adc\_driver.c@{adc\_driver.c}}
+\doxysubsubsection{\texorpdfstring{adc\_read\_set\_output()}{adc\_read\_set\_output()}}
+{\footnotesize\ttfamily void adc\+\_\+read\+\_\+set\+\_\+output (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{adc__driver_8h_af09eea452dd906601ddbbdaddc0c4c6b}{adc\+\_\+channel\+\_\+id\+\_\+t}}}]{id,  }\item[{\mbox{\hyperlink{adc__driver_8h_a76fbc04bf3971a904308657d04bd4211}{adc\+\_\+value\+\_\+t}}}]{value,  }\item[{\mbox{\hyperlink{adc__driver_8h_aff7c9a0dc09ef3fbd1db3b87b80ad897}{adc\+\_\+return\+\_\+t}}}]{return\+\_\+value }\end{DoxyParamCaption})}
+
+
+
+Helper function for setting what is returned by \mbox{\hyperlink{adc__driver_8h_a682ae3cd07e3fd82eadf8fdbea9a0bf3}{adc\+\_\+read()}}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em id} & The ID of the A\+DC channel you want to specify the \mbox{\hyperlink{adc__driver_8h_a682ae3cd07e3fd82eadf8fdbea9a0bf3}{adc\+\_\+read()}} output for.. \\
+\hline
+\mbox{\texttt{ in}}  & {\em value} & The value that is assigned to the A\+DC value output. \\
+\hline
+\mbox{\texttt{ in}}  & {\em return\+\_\+value} & The value that is returned by \mbox{\hyperlink{adc__driver_8h_a682ae3cd07e3fd82eadf8fdbea9a0bf3}{adc\+\_\+read()}}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+This is just some code for manual mocking that can help you with testing! 
+\end{DoxyNote}

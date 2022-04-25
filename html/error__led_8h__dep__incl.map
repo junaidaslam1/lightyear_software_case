@@ -1,0 +1,5 @@
+<map id="src/drivers/error_led/error_led.h" name="src/drivers/error_led/error_led.h">
+<area shape="rect" id="node1" title="Header file for a (dummy) error LED driver." alt="" coords="77,5,229,47"/>
+<area shape="rect" id="node2" href="$error__led_8c.html" title="Source file for a (dummy) error LED driver." alt="" coords="5,95,157,136"/>
+<area shape="rect" id="node3" href="$main_8c.html" title="Main file. @description This file contains entry to the software case from Lightyear." alt="" coords="182,102,271,129"/>
+</map>

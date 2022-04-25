@@ -1,0 +1,140 @@
+\hypertarget{Torque__Module_8c}{}\doxysection{src/\+Torque\+\_\+\+Module.c File Reference}
+\label{Torque__Module_8c}\index{src/Torque\_Module.c@{src/Torque\_Module.c}}
+
+
+torque\+\_\+calculator file. @description This module calculates toque based on user input as well as current speed  
+
+
+{\ttfamily \#include \char`\"{}Torque\+\_\+\+Module.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}drivers/adc\+\_\+driver/adc\+\_\+driver.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+Include dependency graph for Torque\+\_\+\+Module.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Torque__Module_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{Torque__Module_8c_a37698963867ac53784f00397dc776d22}{get\+\_\+user\+\_\+throttle\+\_\+input}} (void)
+\begin{DoxyCompactList}\small\item\em The function returns a random value in between 0 and 100. The applied throttle is between 0 and 100\% of the total mechanical capacity of the throttle pedal. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{Torque__Module_8c_a9ece18c1eba212e3bb98b72098e72073}{get\+\_\+pedal\+\_\+angle}} (unsigned int throttle\+\_\+applied)
+\begin{DoxyCompactList}\small\item\em The function returns angle between 0 and 30 degrees based on applied throttle from 0\% to 100\% of its mechanical range. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{adc__driver_8h_a76fbc04bf3971a904308657d04bd4211}{adc\+\_\+value\+\_\+t}} \mbox{\hyperlink{Torque__Module_8c_af70bbc063c004efc8daf8da84a3f0b45}{calc\+\_\+adc\+\_\+value}} (\mbox{\hyperlink{adc__driver_8h_af09eea452dd906601ddbbdaddc0c4c6b}{adc\+\_\+channel\+\_\+id\+\_\+t}} in\+ID, float angle)
+\begin{DoxyCompactList}\small\item\em This function returns A\+DC value from specific channel. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{Torque__Module_8c_a25eda3c9416ca6dae698f2c37d0083b0}{get\+\_\+rotation\+\_\+timer\+\_\+count}} (void)
+\begin{DoxyCompactList}\small\item\em The function returns a random value in between M\+I\+N\+\_\+\+T\+I\+M\+E\+R\+\_\+\+C\+O\+U\+NT and M\+A\+X\+\_\+\+T\+I\+M\+E\+R\+\_\+\+C\+O\+U\+NT millisecond.. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{Torque__Module_8c_ad9d27a12d8259888b706767d8408ece9}{get\+\_\+rpm\+\_\+based\+\_\+speed}} (unsigned int timer\+\_\+counts)
+\begin{DoxyCompactList}\small\item\em This function returns speed of the vehicle. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{Torque__Module_8c_a7f6880c8840011ce0b66d173dd4232b9}{get\+\_\+fixed\+\_\+speed}} (void)
+\begin{DoxyCompactList}\small\item\em This function returns speed of the vehicle between two fixed values \mbox{[}S\+P\+E\+E\+D\+\_\+\+A\+T\+\_\+\+R\+E\+ST and S\+P\+E\+E\+D\+\_\+\+A\+T\+\_\+\+M\+O\+VE\mbox{]}. \end{DoxyCompactList}\item 
+signed char \mbox{\hyperlink{Torque__Module_8c_a1bc13ffbab3a0c616e2a17e1c9c78643}{get\+\_\+torque\+\_\+two\+\_\+speed}} (float angle, Speed\+Levels \+\_\+\+Speed\+Level)
+\begin{DoxyCompactList}\small\item\em This function returns torque with respect to two speed levels and exerted angle. \end{DoxyCompactList}\item 
+signed char \mbox{\hyperlink{Torque__Module_8c_aa2973290856b4a3fdae434dfdd5017d4}{get\+\_\+torque\+\_\+rpm\+\_\+based\+\_\+speed}} (float angle, unsigned int speed)
+\begin{DoxyCompactList}\small\item\em This function returns torque with respect to speed and exerted angle This is calculated with hypothetically calculated difference of torque values at 0\% throttle between S\+P\+E\+E\+D\+\_\+\+A\+T\+\_\+\+R\+E\+ST and S\+P\+E\+E\+D\+\_\+\+A\+T\+\_\+\+M\+O\+VE assuming S\+P\+E\+E\+D\+\_\+\+A\+T\+\_\+\+M\+O\+VE will be highest speed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Torque__Module_8c_ace05429d248ee3ce6bb2a84a7cddf766}{init\+\_\+two\+\_\+speed\+\_\+torque\+\_\+data}} (void)
+\begin{DoxyCompactList}\small\item\em This function simply extrapolates the data of the provided graph, and fills up a hypothetical torque value array based on the two speed levels (S\+P\+E\+E\+D\+\_\+\+A\+T\+\_\+\+R\+E\+S\+T/\+S\+P\+E\+E\+D\+\_\+\+A\+T\+\_\+\+M\+O\+VE K\+PH) and Percentage of throttle angle capacity. This initialization is performed to skip non-\/trivial calculation at the run-\/time so as to increase performance even further. This is just one of the ways to do this kind of task and is here only for Demo purposes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+torque\+\_\+calculator file. @description This module calculates toque based on user input as well as current speed 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{Torque__Module_8c_af70bbc063c004efc8daf8da84a3f0b45}\label{Torque__Module_8c_af70bbc063c004efc8daf8da84a3f0b45}} 
+\index{Torque\_Module.c@{Torque\_Module.c}!calc\_adc\_value@{calc\_adc\_value}}
+\index{calc\_adc\_value@{calc\_adc\_value}!Torque\_Module.c@{Torque\_Module.c}}
+\doxysubsubsection{\texorpdfstring{calc\_adc\_value()}{calc\_adc\_value()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{adc__driver_8h_a76fbc04bf3971a904308657d04bd4211}{adc\+\_\+value\+\_\+t}} calc\+\_\+adc\+\_\+value (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{adc__driver_8h_af09eea452dd906601ddbbdaddc0c4c6b}{adc\+\_\+channel\+\_\+id\+\_\+t}}}]{in\+ID,  }\item[{float}]{angle }\end{DoxyParamCaption})}
+
+
+
+This function returns A\+DC value from specific channel. 
+
+Description\+: This function returns A\+DC value from specific channel Inputs\+: adc\+\_\+channel\+\_\+id\+\_\+t (in\+ID) \+: angle w.\+r.\+t applied throttle output\+: return\+: adc\+\_\+value\+\_\+t \mbox{\Hypertarget{Torque__Module_8c_a7f6880c8840011ce0b66d173dd4232b9}\label{Torque__Module_8c_a7f6880c8840011ce0b66d173dd4232b9}} 
+\index{Torque\_Module.c@{Torque\_Module.c}!get\_fixed\_speed@{get\_fixed\_speed}}
+\index{get\_fixed\_speed@{get\_fixed\_speed}!Torque\_Module.c@{Torque\_Module.c}}
+\doxysubsubsection{\texorpdfstring{get\_fixed\_speed()}{get\_fixed\_speed()}}
+{\footnotesize\ttfamily unsigned int get\+\_\+fixed\+\_\+speed (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function returns speed of the vehicle between two fixed values \mbox{[}S\+P\+E\+E\+D\+\_\+\+A\+T\+\_\+\+R\+E\+ST and S\+P\+E\+E\+D\+\_\+\+A\+T\+\_\+\+M\+O\+VE\mbox{]}. 
+
+Description\+: This function returns speed of the vehicle between two fixed values \mbox{[}S\+P\+E\+E\+D\+\_\+\+A\+T\+\_\+\+R\+E\+ST and S\+P\+E\+E\+D\+\_\+\+A\+T\+\_\+\+M\+O\+VE\mbox{]} Inputs\+: output\+: return\+: Speed of the vehicle \mbox{\Hypertarget{Torque__Module_8c_a9ece18c1eba212e3bb98b72098e72073}\label{Torque__Module_8c_a9ece18c1eba212e3bb98b72098e72073}} 
+\index{Torque\_Module.c@{Torque\_Module.c}!get\_pedal\_angle@{get\_pedal\_angle}}
+\index{get\_pedal\_angle@{get\_pedal\_angle}!Torque\_Module.c@{Torque\_Module.c}}
+\doxysubsubsection{\texorpdfstring{get\_pedal\_angle()}{get\_pedal\_angle()}}
+{\footnotesize\ttfamily float get\+\_\+pedal\+\_\+angle (\begin{DoxyParamCaption}\item[{unsigned int}]{throttle\+\_\+applied }\end{DoxyParamCaption})}
+
+
+
+The function returns angle between 0 and 30 degrees based on applied throttle from 0\% to 100\% of its mechanical range. 
+
+Description\+: The function returns angle between 0 and 30 degrees based on applied throttle from 0\% to 100\% of its mechanical range. Inputs\+: applied\+\_\+throttle Output\+: Return\+: pedal\+\_\+angle \mbox{\Hypertarget{Torque__Module_8c_a25eda3c9416ca6dae698f2c37d0083b0}\label{Torque__Module_8c_a25eda3c9416ca6dae698f2c37d0083b0}} 
+\index{Torque\_Module.c@{Torque\_Module.c}!get\_rotation\_timer\_count@{get\_rotation\_timer\_count}}
+\index{get\_rotation\_timer\_count@{get\_rotation\_timer\_count}!Torque\_Module.c@{Torque\_Module.c}}
+\doxysubsubsection{\texorpdfstring{get\_rotation\_timer\_count()}{get\_rotation\_timer\_count()}}
+{\footnotesize\ttfamily unsigned int get\+\_\+rotation\+\_\+timer\+\_\+count (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+The function returns a random value in between M\+I\+N\+\_\+\+T\+I\+M\+E\+R\+\_\+\+C\+O\+U\+NT and M\+A\+X\+\_\+\+T\+I\+M\+E\+R\+\_\+\+C\+O\+U\+NT millisecond.. 
+
+Description\+: The function returns a random value in between M\+I\+N\+\_\+\+T\+I\+M\+E\+R\+\_\+\+C\+O\+U\+NT and M\+A\+X\+\_\+\+T\+I\+M\+E\+R\+\_\+\+C\+O\+U\+NT millisecond. Inputs\+: output\+: milliseconds elapsed between consecutive rotations \mbox{\Hypertarget{Torque__Module_8c_ad9d27a12d8259888b706767d8408ece9}\label{Torque__Module_8c_ad9d27a12d8259888b706767d8408ece9}} 
+\index{Torque\_Module.c@{Torque\_Module.c}!get\_rpm\_based\_speed@{get\_rpm\_based\_speed}}
+\index{get\_rpm\_based\_speed@{get\_rpm\_based\_speed}!Torque\_Module.c@{Torque\_Module.c}}
+\doxysubsubsection{\texorpdfstring{get\_rpm\_based\_speed()}{get\_rpm\_based\_speed()}}
+{\footnotesize\ttfamily unsigned int get\+\_\+rpm\+\_\+based\+\_\+speed (\begin{DoxyParamCaption}\item[{unsigned int}]{timer\+\_\+counts }\end{DoxyParamCaption})}
+
+
+
+This function returns speed of the vehicle. 
+
+Description\+: This function returns speed of the vehicle Inputs\+: timer\+\_\+counts is the time in millisecond elapsed between two consecutive rotation interrupts, or signals captured via timer. output\+: return\+: Speed of the vehicle \mbox{\Hypertarget{Torque__Module_8c_aa2973290856b4a3fdae434dfdd5017d4}\label{Torque__Module_8c_aa2973290856b4a3fdae434dfdd5017d4}} 
+\index{Torque\_Module.c@{Torque\_Module.c}!get\_torque\_rpm\_based\_speed@{get\_torque\_rpm\_based\_speed}}
+\index{get\_torque\_rpm\_based\_speed@{get\_torque\_rpm\_based\_speed}!Torque\_Module.c@{Torque\_Module.c}}
+\doxysubsubsection{\texorpdfstring{get\_torque\_rpm\_based\_speed()}{get\_torque\_rpm\_based\_speed()}}
+{\footnotesize\ttfamily signed char get\+\_\+torque\+\_\+rpm\+\_\+based\+\_\+speed (\begin{DoxyParamCaption}\item[{float}]{angle,  }\item[{unsigned int}]{speed }\end{DoxyParamCaption})}
+
+
+
+This function returns torque with respect to speed and exerted angle This is calculated with hypothetically calculated difference of torque values at 0\% throttle between S\+P\+E\+E\+D\+\_\+\+A\+T\+\_\+\+R\+E\+ST and S\+P\+E\+E\+D\+\_\+\+A\+T\+\_\+\+M\+O\+VE assuming S\+P\+E\+E\+D\+\_\+\+A\+T\+\_\+\+M\+O\+VE will be highest speed. 
+
+Description\+: This function returns torque with respect to speed and exerted angle This is calculated with hypothetically calculated difference of torque values at 0\% throttle between S\+P\+E\+E\+D\+\_\+\+A\+T\+\_\+\+R\+E\+ST and S\+P\+E\+E\+D\+\_\+\+A\+T\+\_\+\+M\+O\+VE assuming S\+P\+E\+E\+D\+\_\+\+A\+T\+\_\+\+M\+O\+VE will be highest speed. Inputs\+: angle \+: speed Output\+: return\+: torque \mbox{\Hypertarget{Torque__Module_8c_a1bc13ffbab3a0c616e2a17e1c9c78643}\label{Torque__Module_8c_a1bc13ffbab3a0c616e2a17e1c9c78643}} 
+\index{Torque\_Module.c@{Torque\_Module.c}!get\_torque\_two\_speed@{get\_torque\_two\_speed}}
+\index{get\_torque\_two\_speed@{get\_torque\_two\_speed}!Torque\_Module.c@{Torque\_Module.c}}
+\doxysubsubsection{\texorpdfstring{get\_torque\_two\_speed()}{get\_torque\_two\_speed()}}
+{\footnotesize\ttfamily signed char get\+\_\+torque\+\_\+two\+\_\+speed (\begin{DoxyParamCaption}\item[{float}]{angle,  }\item[{Speed\+Levels}]{\+\_\+\+Speed\+Level }\end{DoxyParamCaption})}
+
+
+
+This function returns torque with respect to two speed levels and exerted angle. 
+
+Description\+: This function returns torque with respect to two speed levels and exerted angle Inputs\+: angle \+: speed Output\+: return\+: torque \mbox{\Hypertarget{Torque__Module_8c_a37698963867ac53784f00397dc776d22}\label{Torque__Module_8c_a37698963867ac53784f00397dc776d22}} 
+\index{Torque\_Module.c@{Torque\_Module.c}!get\_user\_throttle\_input@{get\_user\_throttle\_input}}
+\index{get\_user\_throttle\_input@{get\_user\_throttle\_input}!Torque\_Module.c@{Torque\_Module.c}}
+\doxysubsubsection{\texorpdfstring{get\_user\_throttle\_input()}{get\_user\_throttle\_input()}}
+{\footnotesize\ttfamily int get\+\_\+user\+\_\+throttle\+\_\+input (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+The function returns a random value in between 0 and 100. The applied throttle is between 0 and 100\% of the total mechanical capacity of the throttle pedal. 
+
+Description\+: The function returns a random value in between 0 and 100. The applied throttle is between 0 and 100\% of the total mechanical capacity of the throttle pedal. Inputs\+: Output\+: Return\+: applied\+\_\+throttle Below 10\% of the max possible throttle (100\%) 0 is returned to indicate error just for demo.\mbox{\Hypertarget{Torque__Module_8c_ace05429d248ee3ce6bb2a84a7cddf766}\label{Torque__Module_8c_ace05429d248ee3ce6bb2a84a7cddf766}} 
+\index{Torque\_Module.c@{Torque\_Module.c}!init\_two\_speed\_torque\_data@{init\_two\_speed\_torque\_data}}
+\index{init\_two\_speed\_torque\_data@{init\_two\_speed\_torque\_data}!Torque\_Module.c@{Torque\_Module.c}}
+\doxysubsubsection{\texorpdfstring{init\_two\_speed\_torque\_data()}{init\_two\_speed\_torque\_data()}}
+{\footnotesize\ttfamily void init\+\_\+two\+\_\+speed\+\_\+torque\+\_\+data (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function simply extrapolates the data of the provided graph, and fills up a hypothetical torque value array based on the two speed levels (S\+P\+E\+E\+D\+\_\+\+A\+T\+\_\+\+R\+E\+S\+T/\+S\+P\+E\+E\+D\+\_\+\+A\+T\+\_\+\+M\+O\+VE K\+PH) and Percentage of throttle angle capacity. This initialization is performed to skip non-\/trivial calculation at the run-\/time so as to increase performance even further. This is just one of the ways to do this kind of task and is here only for Demo purposes. 
+
+Description\+: This function simply extrapolates the data of the provided graph, and fills up a hypothetical torque value array based on the two speed levels (0/50 K\+PH) and Percentage of throttle angle capacity. This initialization is performed to skip non-\/trivial calculation at the run-\/time so as to increase performance even further. This is just one of the ways to do this kind of task and is here only for Demo purposes. Inputs\+: Output\+: return\+: 

@@ -1,0 +1,50 @@
+Note\+: the assignment and the tools used are not necessarily similar to what we do/use in reality!\hypertarget{md_README_autotoc_md1}{}\doxysection{Environment}\label{md_README_autotoc_md1}
+We assume you have a Linux environment in which you can use git/gcc/g++ (can be native Linux, a virtual machine, W\+SL, Min\+GW). If you don’t have such an environment yet the fastest is probably if you install Git for Windows, which comes with a bash console with git and gcc installed.
+
+Additionally, you optionally might want to install doxygen and plantuml, but you can do without.
+
+Please have a look at this repo and all the files that it contains.\hypertarget{md_README_autotoc_md2}{}\doxysection{Functional description}\label{md_README_autotoc_md2}
+For the drivetrain of a prototype vehicle you are asked to implement the part that determines the requested torque based on the user input. The user does this by pressing the throttle pedal.
+
+There are multiple options regarding the throttle pedal, but for now the engineers seem to have selected one that produces two analog output signals, which are connected to a microcontroller.
+
+The relation between the analog signals (redundant for safety reasons) and the pedal angle (min = 0 degrees, max = 30 degrees) are as follows\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily adc1 = 0.\+5 + 0.\+1 $\ast$ angle}
+\item {\ttfamily adc2 = 1.\+0 + 0.\+08 $\ast$ angle}
+\end{DoxyItemize}
+
+Where adc1 and adc2 are voltages and the angle is in degrees. These analog inputs require some basic low pass filtering (moving average).
+
+This pedal angle corresponds to an amount of torque that the motors must provide. This torque is not only dependent on the pedal angle, it’s also dependent on the current speed of the vehicle. The torque for each speed and pedal angle can be found in the graph below.
+
+
+
+In case something goes wrong, in our prototype an L\+ED should light up on the dashboard to indicate something is wrong (in a real production vehicle an error message will be shown on the instrument cluster).\hypertarget{md_README_autotoc_md3}{}\doxysection{What do you have to do?}\label{md_README_autotoc_md3}
+
+\begin{DoxyEnumerate}
+\item Create a feature branch on which you can make your changes named “feature/yyyy\+\_\+mm\+\_\+dd\+\_\+your\+\_\+first\+\_\+name” on which you commit your changes.
+\item Describe your “high level” design in doc/mainpage.\+dox (doxygen style). If you want to add diagrams you can use whatever tool you like, e.\+g. plant\+U\+ML or draw.\+io.
+\item Create the associated C code in src/.
+\item Document your code (everything in English) using Doxygen. Examples can be found in the already existing code.
+\item When you are done, please commit your changes, zip the repo and send it back.
+\end{DoxyEnumerate}
+
+The following commands might come in handy\+:
+
+
+\begin{DoxyItemize}
+\item To compile\+: {\ttfamily gcc -\/pthread \$(find src -\/name \char`\"{}$\ast$.\+c\char`\"{}) -\/Isrc -\/o main}
+\item To generate the documentation\+: {\ttfamily doxygen doc/\+Doxyfile}. Afterwards you can open the generated html that’s at doxygen\+\_\+output/html/index.\+html
+\end{DoxyItemize}
+
+Please note\+:
+
+
+\begin{DoxyItemize}
+\item This assignment is not intended to keep you busy for a long time. If there are things that you believe are important that are missing or wrong that you would (suggest to) do if this was a real-\/life task and you would have more time, then please write that down in doc/mainpage.\+dox.
+\item We are not interested in code that creates/schedules R\+T\+OS tasks or something like that. Briefly explain verbally how you believe that should work in the documentation and in \mbox{\hyperlink{main_8c}{src/main.\+c}} put some code that demonstrates your code a bit.
+\item If you don’t have doxygen installed or are struggling with it (for example because it’s new for you), don’t worry too much about how the html is generated. We can have a look at the .dox file itself as well. 
+\end{DoxyItemize}

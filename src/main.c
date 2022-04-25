@@ -4,15 +4,11 @@
  */
 
 #include <stdio.h>
-#include <stdint.h>
-
 #include "drivers/error_led/error_led.h"
-#include "drivers/adc_driver/adc_driver.h"
 #include <unistd.h>
 #include <string.h>
 #include <pthread.h>
 #include "Torque_Module.h"
-#include <stdint.h>
 
 /************************************************
  * 	Module definitions
