@@ -25,7 +25,7 @@ Where adc1 and adc2 are voltages and the angle is in degrees. These analog input
 
 This pedal angle corresponds to an amount of torque that the motors must provide. This torque is not only dependent on the pedal angle, it’s also dependent on the current speed of the vehicle. The torque for each speed and pedal angle can be found in the graph below.
 
-![pedal map](./doc/Pedalmap.png)
+![pedal map](../doc/Pedalmap.png)
 
 In case something goes wrong, in our prototype an LED should light up on the dashboard to indicate something is wrong (in a real production vehicle an error message will be shown on the instrument cluster).
 
