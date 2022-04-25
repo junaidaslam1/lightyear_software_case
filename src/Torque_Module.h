@@ -14,6 +14,7 @@
  *  different quantities.
  ***********************************************/
 #define MAX_THROTTLE_POSSIBLE		100 	// With respect to 100% (30 degrees) pedal angle
+#define MAX_THROTTLE_DATA_COUNT		101 	//
 
 #define ROTATING_OBJECT_RADIUS	0.5	// Meters
 #define ROTATING_OBJECT_CIRCUM	2*3.14*ROTATING_OBJECT_RADIUS // 2*pi*r (r being the radius)
@@ -57,6 +58,7 @@
 #define MAX_ADC_VOLTAGE		5000 	// milli-volts
 #define ADC_RESOLUTION			65536 	// 16 bit unsigned value
 #define ADC_MULTIPLIER			(ADC_RESOLUTION/MAX_ADC_VOLTAGE)*1000
+#define ADC_LPF_NR_OF_SAMPLES	25
 
 #define OK				0
 #define NOK				-1
@@ -77,14 +79,13 @@ typedef enum {
  *  Structure definitions
  ***********************************************/
 typedef struct {
-	float pvRestingTorqueFiller[MAX_THROTTLE_POSSIBLE];
-	float pvMovingTorqueFiller[MAX_THROTTLE_POSSIBLE];
+	signed char pvRestingTorqueFiller[MAX_THROTTLE_DATA_COUNT];
+	signed char pvMovingTorqueFiller[MAX_THROTTLE_DATA_COUNT];
 }TorqueFiller_t;
 
 /************************************************
  *  Global variable declarations
  ***********************************************/
-extern bool g_TwoSpeed;
 
 /************************************************
  *  Function definitions
@@ -133,10 +134,10 @@ float get_pedal_angle(unsigned int throttle_applied);
 /** @brief This function returns ADC value from specific channel.
  *  @param[in]  adc_channel_id_t.
  *  @param[in]  angle w.r.t applied throttle.
- *  @param[ret] ADC value based on angle of applied throttle and selected channel.
+ *  @param[ret] adc_value_t
  *  @note
  */
-float calc_adc_value(adc_channel_id_t inID, float angle);
+adc_value_t calc_adc_value(adc_channel_id_t inID, float angle);
 
 /** @brief This function returns torque with respect to two speed levels and exerted angle
  *  @param[in]  angle.
@@ -144,7 +145,7 @@ float calc_adc_value(adc_channel_id_t inID, float angle);
  *  @param[ret] torque
  *  @note
  */
-float get_torque_two_speed(float angle, SpeedLevels _SpeedLevel);
+signed char get_torque_two_speed(float angle, SpeedLevels _SpeedLevel);
 
 /** @brief This function returns torque with respect to speed and exerted angle
  * 				This is calculated with hypothetically calculated difference of torque values
@@ -154,7 +155,7 @@ float get_torque_two_speed(float angle, SpeedLevels _SpeedLevel);
  *  @param[ret] torque
  *  @note
  */
-float get_torque_rpm_based_speed(float angle, unsigned int speed);
+signed char get_torque_rpm_based_speed(float angle, unsigned int speed);
 
 /** @brief This function simply extrapolates the data of the provided graph,
  * 	   and fills up a hypothetical torque value array based on the two

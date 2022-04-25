@@ -11,7 +11,8 @@
 #include <time.h>
 
 static TorqueFiller_t s_torque_filler				=	{0};
-static float s_var_speed_torque_0_deg[MAX_POSSIBLE_SPEED]	=	{0};
+static float s_var_speed_torque_0_deg[MAX_POSSIBLE_SPEED]	=	{0.0};
+static adc_value_t s_adc_samples[ADC_NUM_CHANNELS][ADC_LPF_NR_OF_SAMPLES]	=	{{0.0}};
 
 int get_user_throttle_input(void)
 /**
@@ -43,31 +44,59 @@ float get_pedal_angle(unsigned int throttle_applied)
 	return (float)((float)throttle_applied/MAX_THROTTLE_POSSIBLE)*MAX_ANGLE;
 }
 
-float calc_adc_value(adc_channel_id_t inID, float angle)
+static adc_value_t get_movingAvg(adc_channel_id_t inID, adc_value_t nextSample)
+/**
+ * Description: This function returns ADC moving average value
+ * Inputs:      adc_channel_id_t (inID)
+ * 	     :	    angle w.r.t applied throttle
+ * output:
+ * return:      adc_value_t
+ */
+{
+	static uint32_t lv_Sum = 0;
+	static uint16_t adc_lpf_pos[ADC_NUM_CHANNELS] = {0};
+
+	//Subtract the oldest number from the prev sum, add the new number
+	lv_Sum = lv_Sum - s_adc_samples[inID][adc_lpf_pos[inID]] + nextSample;
+
+	//Assign the nextNum to the position in the array
+	s_adc_samples[inID][adc_lpf_pos[inID]] = nextSample;
+
+	adc_lpf_pos[inID]++;
+	if(adc_lpf_pos[inID] == ADC_LPF_NR_OF_SAMPLES) {
+			adc_lpf_pos[inID] = 0;
+	}
+  /** In a normal situation we would not need following ternary statement
+   *  as we would first take X number of samples, and then will apply
+   *  the  moving average with each new sample; hence dividing by X.
+   */
+	adc_value_t lv_Mov_Avg = (adc_value_t)(s_adc_samples[inID][adc_lpf_pos[inID]] != 0 ? \
+							 (lv_Sum / ADC_LPF_NR_OF_SAMPLES) : (lv_Sum/(adc_lpf_pos[inID])));
+
+	#if DEBUG
+		printf("%s | ADC_CHANNEL:%u SamplePosition:%u Removed_Sample:%u, NewSample:%u Sum:%u MovAvg:%u\n",
+			   __func__, inID, adc_lpf_pos[inID], s_adc_samples[inID][adc_lpf_pos[inID]], nextSample, lv_Sum, lv_Mov_Avg);
+	#endif
+
+	return  lv_Mov_Avg;
+}
+
+adc_value_t calc_adc_value(adc_channel_id_t inID, float angle)
 /**
  * Description: This function returns ADC value from specific channel
  * Inputs:      adc_channel_id_t (inID)
- * 	:	angle w.r.t applied throttle
+ * 	     :	    angle w.r.t applied throttle
  * output:
- * return: 	ADC value based on angle of applied throttle and selected channel.
+ * return:      adc_value_t
  */
 {
-	switch(inID) {
-		case(ADC_CHANNEL0): {
-			#if DEBUG
-				printf("%s | ADC_CHANNEL0:%f\n", __func__, (float)(0.5 + 0.1 * angle));
-			#endif
-			return (float)(0.5 + 0.1 * angle);
-		} break;
-		case(ADC_CHANNEL1): {
-			#if DEBUG
-				printf("%s | ADC_CHANNEL1:%f\n", __func__, (float)(0.5 + 0.1 * angle));
-			#endif
-			return (float)(1.0 + 0.08 * angle);
-		} break;
-		default: break;
-	}
-	return 0.0;
+	float lv_ADC	=	inID == ADC_CHANNEL0 ? (float)(0.5 + 0.1 * angle) : (float)(1.0 + 0.08 * angle);
+
+	#if DEBUG
+		printf("%s | ADC_CHANNEL:%d = %f => %u\n", __func__, inID, lv_ADC, (adc_value_t)(lv_ADC*ADC_MULTIPLIER));
+	#endif
+
+	return get_movingAvg(inID, (adc_value_t)(lv_ADC*ADC_MULTIPLIER));
 }
 
 unsigned int get_rotation_timer_count(void)
@@ -123,7 +152,7 @@ unsigned int get_fixed_speed(void)
 	return ((rand() % (SPEED_AT_MOVE - SPEED_AT_REST + 1)) + SPEED_AT_REST) < TWO_SPEED_DUMMY_THRESHOLD ? SPEED_AT_REST : SPEED_AT_MOVE;
 }
 
-float get_torque_two_speed(float angle, SpeedLevels _SpeedLevel)
+signed char get_torque_two_speed(float angle, SpeedLevels _SpeedLevel)
 /**
  * Description: This function returns torque with respect to two speed levels and exerted angle
  * Inputs: 	angle
@@ -136,13 +165,13 @@ float get_torque_two_speed(float angle, SpeedLevels _SpeedLevel)
 	switch(_SpeedLevel) {
 		case(Resting): {
 			#if DEBUG
-				printf("%s | Resting angle:%f lv_throttle:%u torque:%f\n", __func__, angle, lv_Throttle, s_torque_filler.pvRestingTorqueFiller[lv_Throttle]);
+				printf("%s | Resting angle:%f lv_throttle:%u torque:%d\n", __func__, angle, lv_Throttle, s_torque_filler.pvRestingTorqueFiller[lv_Throttle]);
 			#endif
 			return s_torque_filler.pvRestingTorqueFiller[lv_Throttle];
 		} break;
 		case(Moving): {
 			#if DEBUG
-				printf("%s | Moving angle:%f lv_throttle:%u torque:%f\n", __func__, angle, lv_Throttle, s_torque_filler.pvMovingTorqueFiller[lv_Throttle]);
+				printf("%s | Moving angle:%f lv_throttle:%u torque:%d\n", __func__, angle, lv_Throttle, s_torque_filler.pvMovingTorqueFiller[lv_Throttle]);
 			#endif
 			return s_torque_filler.pvMovingTorqueFiller[lv_Throttle];
 		} break;
@@ -151,7 +180,7 @@ float get_torque_two_speed(float angle, SpeedLevels _SpeedLevel)
 	return TORQUE_ERROR_VALUE;
 }
 
-float get_torque_rpm_based_speed(float angle, unsigned int speed)
+signed char get_torque_rpm_based_speed(float angle, unsigned int speed)
 /**
  * Description: This function returns torque with respect to speed and exerted angle
  * 		This is calculated with hypothetically calculated difference of torque values
@@ -171,10 +200,10 @@ float get_torque_rpm_based_speed(float angle, unsigned int speed)
 	}
 
 	#if DEBUG
-		printf("angle:%f Speed:%d torque_step:%f torque:%f\n", angle, speed, lv_torque_step, lv_torque);
+		printf("angle:%f Speed:%d torque_step:%f torque:%d\n", angle, speed, lv_torque_step, (signed char)lv_torque);
 	#endif
 
-	return lv_torque;
+	return (signed char)lv_torque;
 }
 
 void init_two_speed_torque_data(void)
@@ -202,19 +231,22 @@ void init_two_speed_torque_data(void)
 	s_torque_filler.pvMovingTorqueFiller[0]	=	TORQUE_AT_50KM_0_DEG;
 
 	#if DEBUG
-		printf("ThrottlePercent:%d RestingTorque:%f MovingTorque:%f\n", 0, \
+		printf("ThrottlePercent:%d RestingTorque:%d MovingTorque:%d\n", 0, \
 				s_torque_filler.pvRestingTorqueFiller[0], \
 				s_torque_filler.pvMovingTorqueFiller[0]);
 	#endif
 
-	for(int throttle_applied = 1; throttle_applied <= MAX_THROTTLE_POSSIBLE; throttle_applied++) {
-		s_torque_filler.pvRestingTorqueFiller[throttle_applied]	=	\
-				s_torque_filler.pvRestingTorqueFiller[throttle_applied-1] + Torque_Step_Per_Angle[Resting];
-		s_torque_filler.pvMovingTorqueFiller[throttle_applied]	=	\
-				s_torque_filler.pvMovingTorqueFiller[throttle_applied-1] + Torque_Step_Per_Angle[Moving];
+	float lv_Resting_Torque = TORQUE_AT_REST_0_DEG, lv_Moving_Torque = TORQUE_AT_50KM_0_DEG;
+
+	for(unsigned int throttle_applied = 1; throttle_applied < MAX_THROTTLE_DATA_COUNT; throttle_applied++) {
+		lv_Resting_Torque += Torque_Step_Per_Angle[Resting];
+		lv_Moving_Torque += Torque_Step_Per_Angle[Moving];
+
+		s_torque_filler.pvRestingTorqueFiller[throttle_applied]	=	(signed char)lv_Resting_Torque;
+		s_torque_filler.pvMovingTorqueFiller[throttle_applied]	=	(signed char)lv_Moving_Torque;
 
 		#if DEBUG
-			printf("ThrottlePercent:%d RestingTorque:%f MovingTorque:%f\n", throttle_applied, \
+			printf("ThrottlePercent:%d RestingTorque:%d MovingTorque:%d\n", throttle_applied, \
 					s_torque_filler.pvRestingTorqueFiller[throttle_applied], \
 					s_torque_filler.pvMovingTorqueFiller[throttle_applied]);
 		#endif

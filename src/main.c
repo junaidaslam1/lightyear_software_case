@@ -7,19 +7,21 @@
 #include <stdint.h>
 
 #include "drivers/error_led/error_led.h"
+#include "drivers/adc_driver/adc_driver.h"
 #include <unistd.h>
 #include <string.h>
 #include <pthread.h>
 #include "Torque_Module.h"
+#include <stdint.h>
 
 /************************************************
  * 	Module definitions
  ***********************************************/
-bool 	g_TwoSpeed	=	true, \
+static bool 	g_TwoSpeed	=	true, \
 	g_ThreadedImplementation = false;
 
-static float 	s_Angle = 0.0, \
-		s_Torque = 0.0;
+static float 	s_Angle = 0.0;
+static signed char	s_Torque = 0;
 
 static unsigned int s_Speed = 0;
 
@@ -50,11 +52,11 @@ static int Calculate_Angle(void)
 		return NOK;
 	} else {
 		s_Angle = get_pedal_angle(lvThrottleInput);
-		adc_read_set_output(ADC_CHANNEL0, calc_adc_value(ADC_CHANNEL0, s_Angle)*ADC_MULTIPLIER, ADC_RET_OK);
-		adc_read_set_output(ADC_CHANNEL1, calc_adc_value(ADC_CHANNEL1, s_Angle)*ADC_MULTIPLIER, ADC_RET_OK);
 		#if DEBUG
 			printf("s_Angle:%f\n", s_Angle);
 		#endif
+		adc_read_set_output(ADC_CHANNEL0, calc_adc_value(ADC_CHANNEL0, s_Angle)*ADC_MULTIPLIER, ADC_RET_OK);
+		adc_read_set_output(ADC_CHANNEL1, calc_adc_value(ADC_CHANNEL1, s_Angle)*ADC_MULTIPLIER, ADC_RET_OK);
 	}
 	return OK;
 }
@@ -142,6 +144,7 @@ void* SpeedCalc_Thread(void *args)
 					s_SpeedReleaseTorqueThread	=	true;
 					pthread_mutex_unlock(&s_SharedMutex);
 				} else {
+					error_led_set(true);
 					sleep(1);
 				}
 			}
@@ -164,12 +167,12 @@ static void Calculate_Torque(void)
 	if(g_TwoSpeed) {
 		s_Torque = get_torque_two_speed(s_Angle, s_Speed==0?Resting:Moving);
 		#if DEBUG
-			printf("TwoSpeed Torque:%f %s\n", s_Torque, s_Torque==(-50)?"should throw error":"OK");
+			printf("TwoSpeed Torque:%d %s\n", s_Torque, s_Torque==(-50)?"should throw error":"OK");
 		#endif
 	} else {
 		s_Torque = get_torque_rpm_based_speed(s_Angle, s_Speed);
 		#if DEBUG
-			printf("Random Torque:%f %s\n", s_Torque, s_Torque==(-50)?"should throw error":"OK");
+			printf("Random Torque:%d %s\n", s_Torque, s_Torque==(-50)?"should throw error":"OK");
 		#endif
 	}
 }
@@ -198,7 +201,7 @@ void* TorqueCalc_Thread(void *args)
 	    		(void)adc_read(ADC_CHANNEL0, &lvADC1);
 	    		(void)adc_read(ADC_CHANNEL1, &lvADC2);
 
-	    		printf("Speed:%uKm/h Throttle Angle:%.2fDeg Torque:%.2fNm ADC1:%u ADC2:%u\n",
+	    		printf("Speed:%uKm/h Throttle Angle:%.2fDeg Torque:%dNm ADC1:%u ADC2:%u\n",
 	    				s_Speed, s_Angle, s_Torque, lvADC1, lvADC2);
 
 				pthread_mutex_lock(&s_SharedMutex);
@@ -274,7 +277,7 @@ int Torque_Calculator(void)
     		(void)adc_read(ADC_CHANNEL0, &lvADC1);
     		(void)adc_read(ADC_CHANNEL1, &lvADC2);
 
-    		printf("Speed:%uKm/h Throttle Angle:%.2fDeg Torque:%.2fNm ADC1:%u ADC2:%u\n",
+    		printf("Speed:%uKm/h Throttle Angle:%.2fDeg Torque:%dNm ADC1:%u ADC2:%u\n",
     				s_Speed, s_Angle, s_Torque, lvADC1, lvADC2);
     	}
     	sleep(1);

@@ -3,10 +3,31 @@
 
 @section design Design explanation
 
-System overview:
-	Inputs:
-		1 - Throttle Pedal Angles
-		2 - Speed Levels
+In order to implement the part to provide requested Torque, following are high level requirements:
+
+1 - System should be able to provide angle using the hypothetical user applied throttle.
+2 - System should be able to calculate respective ADC values using the angle of applied throttle pedal.
+3 - System should be able to detect invalid throttle pedal range, and be able to set ERROR LED. 
+    (for demo purpose, minimum threshold is set to 10% of the total capacity). 
+4 - System should be able to provide speed using one of the following methods:                   
+  1 - System should be able to provide speed between two fixed values [SPEED_AT_REST, SPEED_AT_MOVE].
+  2 - System should be able to provide random speed values in between a given range [SPEED_AT_REST, SPEED_AT_MOVE]:
+    1 - System should be able to provide time elapsed in between two consecutive pulses for a hypothetical engine rotation.
+    2 - System should be able to provide RPM using the time from requirement 4.2.1
+    3 - System should be able to provide speed using RPM from requirement 4.2.2
+5 - System should be able to detect speed cap and be able to set ERROR LED.
+
+With reference to the above requirements, a system should present a holistic view. Such a view should be constituted of proper
+input and output interfaces. Furthermore, intermediate subsystems should be able to properly process inputs and provide
+relevant output. Software should be robust enough to handle corner / error cases. The following figure depicts such an overview
+for our desired system.
+
+![System Overview](doc/System_Overview.png)
+
+Above image shows the system overview which has two basic inputs for a providing requested torque. The system has two main
+sources of input, namely, throttle pedal and engine rotation sensor. 
+
+Software flow:	
 
 There is no need to repeat the description for what it should do that you have
 received again here.
