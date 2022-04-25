@@ -55,8 +55,8 @@ static int Calculate_Angle(void)
 		#if DEBUG
 			printf("s_Angle:%f\n", s_Angle);
 		#endif
-		adc_read_set_output(ADC_CHANNEL0, calc_adc_value(ADC_CHANNEL0, s_Angle)*ADC_MULTIPLIER, ADC_RET_OK);
-		adc_read_set_output(ADC_CHANNEL1, calc_adc_value(ADC_CHANNEL1, s_Angle)*ADC_MULTIPLIER, ADC_RET_OK);
+		adc_read_set_output(ADC_CHANNEL0, calc_adc_value(ADC_CHANNEL0, s_Angle), ADC_RET_OK);
+		adc_read_set_output(ADC_CHANNEL1, calc_adc_value(ADC_CHANNEL1, s_Angle), ADC_RET_OK);
 	}
 	return OK;
 }
