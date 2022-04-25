@@ -1,0 +1,81 @@
+\hypertarget{main_8c}{}\doxysection{src/main.c File Reference}
+\label{main_8c}\index{src/main.c@{src/main.c}}
+
+
+Main file. @description This file contains entry to the software case from Lightyear.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}drivers/error\+\_\+led/error\+\_\+led.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$pthread.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}Torque\+\_\+\+Module.\+h\char`\"{}}\newline
+Include dependency graph for main.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$ \mbox{\hyperlink{main_8c_a6033c5d888d931396c9d8e347fbe938c}{Angle\+Calc\+\_\+\+Thread}} (void $\ast$args)
+\item 
+void $\ast$ \mbox{\hyperlink{main_8c_ac5eb079ee2ccfc4357d0756c4df14fbe}{Speed\+Calc\+\_\+\+Thread}} (void $\ast$args)
+\item 
+void $\ast$ \mbox{\hyperlink{main_8c_a731e7c8698b5937d6a98d97201c36faa}{Torque\+Calc\+\_\+\+Thread}} (void $\ast$args)
+\item 
+void \mbox{\hyperlink{main_8c_a853b6782b86dd529163cb4afc7593b74}{Thread\+\_\+creator}} (void)
+\item 
+int \mbox{\hyperlink{main_8c_a3e532156a2a494440cd59f5004ecd26c}{Torque\+\_\+\+Calculator}} (void)
+\item 
+int \mbox{\hyperlink{main_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Main file. @description This file contains entry to the software case from Lightyear. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{main_8c_a6033c5d888d931396c9d8e347fbe938c}\label{main_8c_a6033c5d888d931396c9d8e347fbe938c}} 
+\index{main.c@{main.c}!AngleCalc\_Thread@{AngleCalc\_Thread}}
+\index{AngleCalc\_Thread@{AngleCalc\_Thread}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{AngleCalc\_Thread()}{AngleCalc\_Thread()}}
+{\footnotesize\ttfamily void$\ast$ Angle\+Calc\+\_\+\+Thread (\begin{DoxyParamCaption}\item[{void $\ast$}]{args }\end{DoxyParamCaption})}
+
+Description\+: The function calculates angle of the applied throttle pedal of the vehicle Inputs\+: Output\+: Return\+: returns OK / N\+OK based on the result and context of execution \mbox{\Hypertarget{main_8c_a0ddf1224851353fc92bfbff6f499fa97}\label{main_8c_a0ddf1224851353fc92bfbff6f499fa97}} 
+\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+Description\+: This the entry point for the torque calculator system. It initializes system resources based on the selected speed mode. Inputs\+: Output\+: Return\+: error code should not reach here anyway\mbox{\Hypertarget{main_8c_ac5eb079ee2ccfc4357d0756c4df14fbe}\label{main_8c_ac5eb079ee2ccfc4357d0756c4df14fbe}} 
+\index{main.c@{main.c}!SpeedCalc\_Thread@{SpeedCalc\_Thread}}
+\index{SpeedCalc\_Thread@{SpeedCalc\_Thread}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{SpeedCalc\_Thread()}{SpeedCalc\_Thread()}}
+{\footnotesize\ttfamily void$\ast$ Speed\+Calc\+\_\+\+Thread (\begin{DoxyParamCaption}\item[{void $\ast$}]{args }\end{DoxyParamCaption})}
+
+Description\+: The function calculates speed of the vehicle Inputs\+: Output\+: Return\+: returns OK / N\+OK based on the result and context of execution \mbox{\Hypertarget{main_8c_a853b6782b86dd529163cb4afc7593b74}\label{main_8c_a853b6782b86dd529163cb4afc7593b74}} 
+\index{main.c@{main.c}!Thread\_creator@{Thread\_creator}}
+\index{Thread\_creator@{Thread\_creator}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{Thread\_creator()}{Thread\_creator()}}
+{\footnotesize\ttfamily void Thread\+\_\+creator (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Description\+: The function creates Angle, Speed and Torque calculator threads. these threads are just for D\+E\+MO, and is one of the ways of doing things. A simpler implementation can simply call these three functions in sequence. Inputs\+: Output\+: Return\+: \mbox{\Hypertarget{main_8c_a3e532156a2a494440cd59f5004ecd26c}\label{main_8c_a3e532156a2a494440cd59f5004ecd26c}} 
+\index{main.c@{main.c}!Torque\_Calculator@{Torque\_Calculator}}
+\index{Torque\_Calculator@{Torque\_Calculator}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{Torque\_Calculator()}{Torque\_Calculator()}}
+{\footnotesize\ttfamily int Torque\+\_\+\+Calculator (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Description\+: The function calls Angle, Speed and torque calculator functions in sequence based on acquired values from intermediate and subsequent functions. Inputs\+: Output\+: Return\+: \mbox{\Hypertarget{main_8c_a731e7c8698b5937d6a98d97201c36faa}\label{main_8c_a731e7c8698b5937d6a98d97201c36faa}} 
+\index{main.c@{main.c}!TorqueCalc\_Thread@{TorqueCalc\_Thread}}
+\index{TorqueCalc\_Thread@{TorqueCalc\_Thread}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{TorqueCalc\_Thread()}{TorqueCalc\_Thread()}}
+{\footnotesize\ttfamily void$\ast$ Torque\+Calc\+\_\+\+Thread (\begin{DoxyParamCaption}\item[{void $\ast$}]{args }\end{DoxyParamCaption})}
+
+Description\+: The function calculates torque w.\+r.\+t previously calculated angle and speed Inputs\+: Output\+: Return\+: 

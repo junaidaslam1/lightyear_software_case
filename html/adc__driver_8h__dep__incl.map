@@ -1,0 +1,7 @@
+<map id="src/drivers/adc_driver/adc_driver.h" name="src/drivers/adc_driver/adc_driver.h">
+<area shape="rect" id="node1" title="Header file for a (dummy) ADC driver." alt="" coords="188,5,351,47"/>
+<area shape="rect" id="node2" href="$adc__driver_8c.html" title="Source file for a (dummy) ADC driver." alt="" coords="5,95,168,136"/>
+<area shape="rect" id="node3" href="$Torque__Module_8h.html" title="Header file for declarations." alt="" coords="192,102,347,129"/>
+<area shape="rect" id="node5" href="$Torque__Module_8c.html" title="torque_calculator file. @description This module calculates toque based on user input as well as curr..." alt="" coords="307,184,461,211"/>
+<area shape="rect" id="node4" href="$main_8c.html" title="Main file. @description This file contains entry to the software case from Lightyear." alt="" coords="193,184,282,211"/>
+</map>

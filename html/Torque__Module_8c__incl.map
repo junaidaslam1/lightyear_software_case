@@ -1,0 +1,10 @@
+<map id="src/Torque_Module.c" name="src/Torque_Module.c">
+<area shape="rect" id="node1" title="torque_calculator file. @description This module calculates toque based on user input as well as curr..." alt="" coords="175,5,329,32"/>
+<area shape="rect" id="node2" href="$Torque__Module_8h.html" title="Header file for declarations." alt="" coords="11,80,143,107"/>
+<area shape="rect" id="node4" href="$adc__driver_8h.html" title="Header file for a (dummy) ADC driver." alt="" coords="112,155,251,196"/>
+<area shape="rect" id="node6" title=" " alt="" coords="219,80,285,107"/>
+<area shape="rect" id="node7" title=" " alt="" coords="310,80,381,107"/>
+<area shape="rect" id="node8" title=" " alt="" coords="405,80,469,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,162,88,189"/>
+<area shape="rect" id="node5" title=" " alt="" coords="146,244,217,271"/>
+</map>

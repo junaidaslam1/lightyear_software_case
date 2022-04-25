@@ -22,7 +22,7 @@ input and output interfaces. Furthermore, intermediate subsystems should be able
 relevant output. Software should be robust enough to handle corner / error cases. The following figure depicts such an overview
 for our desired system.
 
-![System Overview](../images/System_Overview.png)
+![System Overview](../doc/images/System_Overview.png)
 
   Above image shows the system which has two basic inputs, namely, throttle pedal and engine rotation sensor. Throttle pedal is 
 supposed to be a mechanical object whose position can be sensed by analogue potentiometer whose relative position can provide the
@@ -48,7 +48,7 @@ is done in software.
 a simpler design would constitute a sequential program where we can calculate angle of the throttle pedal followed by speed
 and torque calculation. Following image shows a simpler sequential approach to do this task:
 
-![Software Flow](../images/simple_software_flow.png)
+![Software Flow](../doc/images/simple_software_flow.png)
 
   The above image shows structure of the code flow in a simple setting. Starting from the main the program presents the facility
 of configuration of application. With respect to the provide data graph, showing relation between speed, angle and torque, one of
@@ -80,7 +80,7 @@ applied throttle angle.
   The provided simple software flow does not inculcate any kind of threaded implementation which is another flavor of doing the exact
 same set of calculations with each having their own context. Such a software flow is given below:
 
-![Software Flow Multi-Threaded](../images/software_flow.png)
+![Software Flow Multi-Threaded](../doc/images/software_flow.png)
 
   The program starts with the main with similar command line options; however, an additional option, which is not visible in the diagram, 
 is available to the user to perform the angle, speed and torque calculation in multi-threaded manner. In this manner, the same set of functions,
@@ -93,14 +93,14 @@ and such tasks are known as DAG tasks.
 
 Even though this was not a specific requirement of this software use case, still this is included for the purpose of demo only as depicted below:
 
-![Directed Acyclic Graph Tasks Relation](../images/dag_tasks.png)
+![Directed Acyclic Graph Tasks Relation](../doc/images/dag_tasks.png)
 
 According to the above relation of task nodes, torque thread cannot begin its execution as long as angle and speed threads are not finished while
 angle and speed threads cannot start before main; however, they both can execute in parallel. 
 
 Finally, we can see the use case of such a system from the user's perspective using the use-case diagram below:
 
-![Use Case Diagram](../images/use_case.png)
+![Use Case Diagram](../doc/images/use_case.png)
 
   Above diagram shows a fairly simple and straightforward use case where an actor/driver pushes the throttle pedal along with the release of the
 acceleration clutch pedal assuming an old manual gear car. The shift level has to be in appropriate place for the car to be in moving condition.

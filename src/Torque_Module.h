@@ -6,8 +6,8 @@
 #ifndef TORQUE_MODULE_H_
 #define TORQUE_MODULE_H_
 
-#include "drivers/adc_driver/adc_driver.h"
 #include <stdbool.h>
+#include "drivers/adc_driver/adc_driver.h"
 
 /************************************************
  *  Macro definitions used in calculating

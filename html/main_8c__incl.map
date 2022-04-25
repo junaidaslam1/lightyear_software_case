@@ -1,0 +1,12 @@
+<map id="src/main.c" name="src/main.c">
+<area shape="rect" id="node1" title="Main file. @description This file contains entry to the software case from Lightyear." alt="" coords="326,5,415,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,87,72,114"/>
+<area shape="rect" id="node3" href="$error__led_8h.html" title="Header file for a (dummy) error LED driver." alt="" coords="97,80,261,121"/>
+<area shape="rect" id="node5" title=" " alt="" coords="285,87,360,114"/>
+<area shape="rect" id="node6" title=" " alt="" coords="385,87,455,114"/>
+<area shape="rect" id="node7" title=" " alt="" coords="479,87,563,114"/>
+<area shape="rect" id="node8" href="$Torque__Module_8h.html" title="Header file for declarations." alt="" coords="587,87,719,114"/>
+<area shape="rect" id="node4" title=" " alt="" coords="308,177,391,203"/>
+<area shape="rect" id="node9" href="$adc__driver_8h.html" title="Header file for a (dummy) ADC driver." alt="" coords="584,169,723,211"/>
+<area shape="rect" id="node10" title=" " alt="" coords="618,259,689,285"/>
+</map>
